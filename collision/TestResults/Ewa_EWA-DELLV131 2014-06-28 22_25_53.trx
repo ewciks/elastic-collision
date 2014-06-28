@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="3dfee73f-aa13-4613-bdc3-73b53815c9cd" name="Ewa@EWA-DELLV131 2014-06-28 22:25:53" runUser="Ewa-DellV131\Ewa" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c4f4939b-3f88-4cfc-b325-a068545cd073">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Ewa_EWA-DELLV131 2014-06-28 22_25_53">
+      <DeploymentItem filename="C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibrary\bin\x86\Debug\CollisionLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-06-28T22:25:53.6972783+02:00" queuing="2014-06-28T22:25:54.9573503+02:00" start="2014-06-28T22:25:54.9653508+02:00" finish="2014-06-28T22:25:55.2433667+02:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Ball2ConstructorTest2" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="dd22bf8f-6c73-d575-32f8-6d9ecb277f31">
+      <Execution id="149ef52e-8d62-4032-94fb-54a2ca5cd564" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Ball2ConstructorTest2" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="dd22bf8f-6c73-d575-32f8-6d9ecb277f31" executionId="149ef52e-8d62-4032-94fb-54a2ca5cd564" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="149ef52e-8d62-4032-94fb-54a2ca5cd564" testId="dd22bf8f-6c73-d575-32f8-6d9ecb277f31" testName="Ball2ConstructorTest2" computerName="EWA-DELLV131" duration="00:00:00.0404447" startTime="2014-06-28T22:25:54.9683510+02:00" endTime="2014-06-28T22:25:55.2283658+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="149ef52e-8d62-4032-94fb-54a2ca5cd564">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;V: (23, -13,1), coord: (2, 1), mass: 0,002, radius: 0,1&gt;. Actual:&lt;V: (23, -13,1), coord: (2, 1), mass: 0,002, radius: 0,1&gt;. </Message>
+          <StackTrace>   at CollisionLibraryTestProject.Ball2Test.Ball2ConstructorTest2() in C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibraryTestProject\Ball2Test.cs:line 107
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
