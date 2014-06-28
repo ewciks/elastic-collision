@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "collision", "collision\collision\collision.csproj", "{A97770C2-C41B-4649-850F-5DC3B98368B3}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "collisionContent", "collision\collisionContent\collisionContent.contentproj", "{F2CAD8DE-E2D1-419F-871F-1246956BCE04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A97770C2-C41B-4649-850F-5DC3B98368B3}.Debug|x86.ActiveCfg = Debug|x86
+		{A97770C2-C41B-4649-850F-5DC3B98368B3}.Debug|x86.Build.0 = Debug|x86
+		{A97770C2-C41B-4649-850F-5DC3B98368B3}.Release|x86.ActiveCfg = Release|x86
+		{A97770C2-C41B-4649-850F-5DC3B98368B3}.Release|x86.Build.0 = Release|x86
+		{F2CAD8DE-E2D1-419F-871F-1246956BCE04}.Debug|x86.ActiveCfg = Debug|x86
+		{F2CAD8DE-E2D1-419F-871F-1246956BCE04}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
