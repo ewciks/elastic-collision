@@ -18,6 +18,7 @@ namespace CollisionLibrary
     public class Ball2
     {
         #region fields
+        private static int instances = 0;
         public Vector2 V { get; set; }              // velocity
         public Vector2 Coordinates { get; set; }    // cooridanted
         public float M { get; set; }                // mass
@@ -31,6 +32,12 @@ namespace CollisionLibrary
             this.Coordinates = coord;
             this.M = mass;
             this.R = rad;
+            instances++;
+        }
+
+        ~Ball2()
+        {
+            instances--;
         }
 
         /// <summary>
@@ -44,6 +51,11 @@ namespace CollisionLibrary
         /// <param name="coord"></param>
         public Ball2(Vector2 coord) : this(Vector2.Zero, coord, 0.0f, 0.0f) { }
         #endregion
+
+        public static int GetActiveIntances()
+        {
+            return instances;
+        }
 
         #region overrides
         public override string ToString()

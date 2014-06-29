@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="4b3ffcd5-d3b8-4dde-86b0-af94caed28e0" name="Ewa@EWA-DELLV131 2014-06-29 12:08:16" runUser="Ewa-DellV131\Ewa" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c4f4939b-3f88-4cfc-b325-a068545cd073">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Ewa_EWA-DELLV131 2014-06-29 12_08_16">
+      <DeploymentItem filename="C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibrary\bin\x86\Debug\CollisionLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-06-29T12:08:16.6567665+02:00" queuing="2014-06-29T12:08:19.4209246+02:00" start="2014-06-29T12:08:19.4699274+02:00" finish="2014-06-29T12:08:19.8439488+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="InstancesTestTwoBalls" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="a0e243aa-6d6f-0caa-119c-cc5cf78a3b81">
+      <Execution id="4b8a3d20-2566-4654-b9e7-1661f98038af" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="InstancesTestTwoBalls" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="a0e243aa-6d6f-0caa-119c-cc5cf78a3b81" executionId="4b8a3d20-2566-4654-b9e7-1661f98038af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="4b8a3d20-2566-4654-b9e7-1661f98038af" testId="a0e243aa-6d6f-0caa-119c-cc5cf78a3b81" testName="InstancesTestTwoBalls" computerName="EWA-DELLV131" duration="00:00:00.0562372" startTime="2014-06-29T12:08:19.4949288+02:00" endTime="2014-06-29T12:08:19.8209474+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4b8a3d20-2566-4654-b9e7-1661f98038af">
+    </UnitTestResult>
+  </Results>
+</TestRun>

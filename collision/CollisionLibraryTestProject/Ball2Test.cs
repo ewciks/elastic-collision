@@ -162,5 +162,19 @@ namespace CollisionLibraryTestProject
             actual = target.V;
             Assert.AreEqual(expected, actual);
         }
+
+        /// <summary>
+        ///A test for instances counter - creating two balls
+        ///</summary>
+        [TestMethod()]
+        public void InstancesTestTwoBalls()
+        {
+            Ball2 target = new Ball2();
+            Ball2 target2 = new Ball2();
+            int expected = 2;
+            int actual = Ball2.GetActiveIntances();
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
