@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Ball2.cs" />
     <Compile Include="Collision.cs" />
+    <Compile Include="QuadraticEquation.cs" />
     <Compile Include="Transformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Ball2Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuadraticEquationTest.cs" />
     <Compile Include="TransformationTest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +75,9 @@
       <Project>{49A5D0BB-2CE2-4627-9A60-E553C69FB68A}</Project>
       <Name>CollisionLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="Test References\CollisionLibrary.accessor" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
