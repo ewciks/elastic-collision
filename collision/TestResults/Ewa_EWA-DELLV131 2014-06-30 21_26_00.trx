@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="57c16662-61c9-415c-8b74-6471607ff9f3" name="Ewa@EWA-DELLV131 2014-06-30 21:26:00" runUser="Ewa-DellV131\Ewa" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c4f4939b-3f88-4cfc-b325-a068545cd073">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Ewa_EWA-DELLV131 2014-06-30 21_26_00">
+      <DeploymentItem filename="C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibrary\bin\x86\Debug\CollisionLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-06-30T21:26:00.5535550+02:00" queuing="2014-06-30T21:26:01.5466118+02:00" start="2014-06-30T21:26:01.5646128+02:00" finish="2014-06-30T21:26:01.8576296+02:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetNextBallBallCollisionTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="045e98fb-90a6-01d3-6e46-3b72ca610df2">
+      <Execution id="0e307388-93c3-4404-b6a0-3901a8317f06" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetNextBallBallCollisionTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="045e98fb-90a6-01d3-6e46-3b72ca610df2" executionId="0e307388-93c3-4404-b6a0-3901a8317f06" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="0e307388-93c3-4404-b6a0-3901a8317f06" testId="045e98fb-90a6-01d3-6e46-3b72ca610df2" testName="GetNextBallBallCollisionTest" computerName="EWA-DELLV131" duration="00:00:00.0444554" startTime="2014-06-30T21:26:01.5686131+02:00" endTime="2014-06-30T21:26:01.8096268+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0e307388-93c3-4404-b6a0-3901a8317f06">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;2&gt;. Actual:&lt;1&gt;. 0,4979987 / 1 / 2 || 0,4979987 / 1 / 5</Message>
+          <StackTrace>   at CollisionLibraryTestProject.CollisionTest.GetNextBallBallCollisionTest() in C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibraryTestProject\CollisionTest.cs:line 136
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
