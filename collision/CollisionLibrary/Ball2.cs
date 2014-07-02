@@ -19,7 +19,6 @@ namespace CollisionLibrary
     {
         #region fields
         public Vector2 V { get; set; }              // velocity
-        public float M { get; set; }                // mass
         public float R { get; set; }                // radius
         #endregion
 
@@ -28,8 +27,10 @@ namespace CollisionLibrary
         {
             this.V = vel;
             this.Coordinates = coord;
-            this.M = mass;
-            this.R = rad;
+            if (mass >= CollisionObject.WALL_MASS || mass <= 0.0f) this.M = 0.001f;
+            else this.M = mass;
+            if (rad <= 0.0f) this.R = 0.001f; 
+            else this.R = rad;
         }
 
         /// <summary>

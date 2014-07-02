@@ -156,5 +156,145 @@ namespace CollisionLibraryTestProject
             //string result = target.NextCollisions[0].Time + " / " + target.NextCollisions[0].Obj1.Id + " / " + target.NextCollisions[0].Obj2.Id + " || "
             //        + target.NextCollisions[1].Time + " / " + target.NextCollisions[1].Obj1.Id + " / " + target.NextCollisions[1].Obj2.Id;
         }
+
+        /// <summary>
+        ///A test for MoveBallsToCollisionTime
+        ///</summary>
+        [TestMethod()]
+        public void MoveBallsToCollisionTimeTest()
+        {
+            List<Ball2> balls = new List<Ball2>();
+            balls.Add(new Ball2(new Vector2(-1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(1.5f, 6.0f), new Vector2(1.0f, -3.0f), 0.01f, 0.01f));
+            Collision target = new Collision(balls, new List<Wall2>());
+            target.NextCollisions = new List<NextCollision>();
+            target.NextCollisions.Add(new NextCollision(2.0f, balls[0], balls[1]));
+            target.MoveBallsToCollisionTime();
+            Vector2 actual = target.Balls[0].Coordinates;
+            Vector2 expected = new Vector2(-1.0f, 9.0f);
+            Assert.AreEqual(actual, expected);
+        }
+
+        /// <summary>
+        ///A test for MoveBallsToCollisionTime
+        ///</summary>
+        [TestMethod()]
+        public void MoveBallsToCollisionTimeTestCheckIfNextCollisionsIsUpdated()
+        {
+            List<Ball2> balls = new List<Ball2>();
+            balls.Add(new Ball2(new Vector2(-1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(1.5f, 6.0f), new Vector2(1.0f, -3.0f), 0.01f, 0.01f));
+            Collision target = new Collision(balls, new List<Wall2>());
+            target.NextCollisions = new List<NextCollision>();
+            target.NextCollisions.Add(new NextCollision(2.0f, balls[0], balls[1]));
+            target.MoveBallsToCollisionTime();
+            Vector2 actual = target.Balls[0].Coordinates;
+            Vector2 expected = new Vector2(-1.0f, 9.0f);
+            Assert.AreEqual(actual, expected);
+            Assert.AreEqual(target.Balls[0].Coordinates, target.NextCollisions[0].Obj1.Coordinates);
+        }
+
+        /// <summary>
+        ///A test for CalcPostImpactVBallWall
+        ///</summary>
+        [TestMethod()]
+        public void CalcPostImpactVBallWallTestLeftWallFirstObjBall()
+        {
+            Ball2 ball = new Ball2(new Vector2(-1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            Wall2 wall = new Wall2(new Vector2(2.0f, -3.0f), WallOrientation.Left);
+            Collision target = new Collision();
+            NextCollision nc = new NextCollision(0.0f, ball, wall);
+            Ball2 expectedBall = new Ball2(new Vector2(1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            NextCollision actual;
+            actual = target.CalcPostImpactVBallWall(nc);
+            Ball2 actualBall = (Ball2)actual.Obj1;
+            Assert.AreEqual(expectedBall, actualBall);
+        }
+
+        /// <summary>
+        ///A test for CalcPostImpactVBallWall
+        ///</summary>
+        [TestMethod()]
+        public void CalcPostImpactVBallWallTestLeftWallSecondObjBall()
+        {
+            Ball2 ball = new Ball2(new Vector2(-1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            Wall2 wall = new Wall2(new Vector2(2.0f, -3.0f), WallOrientation.Left);
+            Collision target = new Collision();
+            NextCollision nc = new NextCollision(0.0f, wall, ball);
+            Ball2 expectedBall = new Ball2(new Vector2(1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            NextCollision actual;
+            actual = target.CalcPostImpactVBallWall(nc);
+            Ball2 actualBall = (Ball2)actual.Obj2;
+            Assert.AreEqual(expectedBall, actualBall);
+        }
+
+        /// <summary>
+        ///A test for CalcPostImpactVBallWall
+        ///</summary>
+        [TestMethod()]
+        public void CalcPostImpactVBallWallTestRight()
+        {
+            Ball2 ball = new Ball2(new Vector2(1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            Wall2 wall = new Wall2(new Vector2(2.0f, -3.0f), WallOrientation.Right);
+            Collision target = new Collision();
+            NextCollision nc = new NextCollision(0.0f, ball, wall);
+            Ball2 expectedBall = new Ball2(new Vector2(-1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            NextCollision actual;
+            actual = target.CalcPostImpactVBallWall(nc);
+            Ball2 actualBall = (Ball2)actual.Obj1;
+            Assert.AreEqual(expectedBall, actualBall);
+        }
+
+        /// <summary>
+        ///A test for CalcPostImpactVBallWall
+        ///</summary>
+        [TestMethod()]
+        public void CalcPostImpactVBallWallTestTop()
+        {
+            Ball2 ball = new Ball2(new Vector2(1.5f, -6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            Wall2 wall = new Wall2(new Vector2(2.0f, -3.0f), WallOrientation.Top);
+            Collision target = new Collision();
+            NextCollision nc = new NextCollision(0.0f, ball, wall);
+            Ball2 expectedBall = new Ball2(new Vector2(1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            NextCollision actual;
+            actual = target.CalcPostImpactVBallWall(nc);
+            Ball2 actualBall = (Ball2)actual.Obj1;
+            Assert.AreEqual(expectedBall, actualBall);
+        }
+
+        /// <summary>
+        ///A test for CalcPostImpactVBallWall
+        ///</summary>
+        [TestMethod()]
+        public void CalcPostImpactVBallWallTestBottom()
+        {
+            Ball2 ball = new Ball2(new Vector2(1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            Wall2 wall = new Wall2(new Vector2(2.0f, -3.0f), WallOrientation.Bottom);
+            Collision target = new Collision();
+            NextCollision nc = new NextCollision(0.0f, ball, wall);
+            Ball2 expectedBall = new Ball2(new Vector2(1.5f, -6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            NextCollision actual;
+            actual = target.CalcPostImpactVBallWall(nc);
+            Ball2 actualBall = (Ball2)actual.Obj1;
+            Assert.AreEqual(expectedBall, actualBall);
+        }
+
+        /// <summary>
+        ///A test for CalcPostImpactVBallBallTheSameBalls
+        ///</summary>
+        [TestMethod()]
+        public void CalcPostImpactVBallBallTest()
+        {
+            Collision target = new Collision();
+            Ball2 b1 = new Ball2(new Vector2(-1.0f, 0.0f), new Vector2(0.02f, 0.0f), 0.01f, 0.01f);
+            Ball2 b2 = new Ball2(new Vector2(2.0f, 0.0f), new Vector2(0.0f, 0.0f), 0.01f, 0.01f);
+            NextCollision nc = new NextCollision(0.0f, b1, b2);
+            Ball2 b1PostExpected = new Ball2(new Vector2(2.0f, 0.0f), new Vector2(0.02f, 0.0f), 0.01f, 0.01f);
+            Ball2 b2PostExpected = new Ball2(new Vector2(-1.0f, 0.0f), new Vector2(0.0f, 0.0f), 0.01f, 0.01f);
+            NextCollision actual;
+            actual = target.CalcPostImpactVBallBall(nc);
+            Assert.AreEqual(actual.Obj1, b1PostExpected);
+            Assert.AreEqual(actual.Obj2, b2PostExpected);
+        }
     }
 }

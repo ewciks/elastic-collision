@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
 
 namespace CollisionLibrary
 {
@@ -23,8 +24,16 @@ namespace CollisionLibrary
         {
             this.NextCollisions = new List<NextCollision>();
             this.NextCollisions.Add(new NextCollision(MAXTIME, new CollisionObject(), new CollisionObject()));
-            this.Balls = balls;
-            this.Walls = walls;
+            if (balls != null && walls != null)
+            {
+                this.Balls = balls;
+                this.Walls = walls;
+            }
+            else
+            {
+                this.Balls = new List<Ball2>();
+                this.Walls = new List<Wall2>();
+            }
         }
 
         public Collision() : this(new List<Ball2>(), new List<Wall2>()) { }
@@ -153,6 +162,107 @@ namespace CollisionLibrary
 
         }
         #endregion collision detection
+
+        #region collision calculations
+        public void MoveBallsToCollisionTime()
+        {
+            if(NextCollisions != null && NextCollisions.Count > 0) 
+            {
+                float colTime = NextCollisions[0].Time;
+                foreach (Ball2 b in Balls)
+                {
+                    b.Coordinates += b.V * colTime;
+                    foreach (NextCollision nc in NextCollisions)
+                    {
+                        if (nc.Obj1.Id == b.Id)
+                        {
+                            nc.Obj1.Coordinates = b.Coordinates;
+                        }
+                        else if (nc.Obj2.Id == b.Id)    // for ball-ball collisions
+                        {
+                            nc.Obj2.Coordinates = b.Coordinates;
+                        }
+                    }
+                }
+            }
+        }
+
+        private Ball2 CalcPostImpactVBallWall(Ball2 b, Wall2 w)
+        {
+            if (w.Orientation == WallOrientation.Right || w.Orientation == WallOrientation.Left)
+            {
+                b.V = new Vector2(-b.V.X, b.V.Y);
+            }
+            else if (w.Orientation == WallOrientation.Top || w.Orientation == WallOrientation.Bottom)
+            {
+                b.V = new Vector2(b.V.X, -b.V.Y);
+            }
+            return b;
+        }
+
+        /// <summary>
+        /// Returns post-impact velocities as a NextCollision object
+        /// </summary>
+        /// <param name="nc"></param>
+        /// <returns></returns>
+        public NextCollision CalcPostImpactVBallWall(NextCollision nc)
+        {
+            if (nc != null && nc.Obj1 != null && nc.Obj2 != null)
+            {
+                if (nc.Obj1.M < CollisionObject.WALL_MASS && nc.Obj2.M == CollisionObject.WALL_MASS)
+                {
+                    Ball2 b = (Ball2)nc.Obj1;
+                    Wall2 w = (Wall2)nc.Obj2;
+                    nc.Obj1 = CalcPostImpactVBallWall(b, w);
+                }
+                else if (nc.Obj1.M == CollisionObject.WALL_MASS && nc.Obj2.M < CollisionObject.WALL_MASS)
+                {
+                    Ball2 b = (Ball2)nc.Obj2;
+                    Wall2 w = (Wall2)nc.Obj1;
+                    nc.Obj2 = CalcPostImpactVBallWall(b, w);
+                }
+            }
+            return nc;
+        }
+
+        /// <summary>
+        /// Returns post-impact velocities as a NextCollision object
+        /// </summary>
+        /// <param name="nc"></param>
+        /// <returns></returns>
+        public NextCollision CalcPostImpactVBallBall(NextCollision nc)
+        {
+            if (nc != null && nc.Obj1 != null && nc.Obj2 != null)
+            {
+                if (nc.Obj1.M < CollisionObject.WALL_MASS && nc.Obj2.M < CollisionObject.WALL_MASS)
+                {
+                    Ball2 b1 = (Ball2)nc.Obj1;
+                    Ball2 b2 = (Ball2)nc.Obj2;
+
+                    Vector2 normal = Transformation.CalcNormal(b1, b2);
+                    Vector2 tangent = Transformation.CalcTangent(normal);
+
+                    float v1n = Transformation.Projection(b1.V, normal);
+                    float v1t = Transformation.Projection(b1.V, tangent);
+                    float v2n = Transformation.Projection(b2.V, normal);
+                    float v2t = Transformation.Projection(b2.V, tangent);
+
+                    float massSum = b1.M + b2.M;
+                    float factor1 = b1.M / massSum;
+                    float factor2 = b2.M / massSum;
+
+                    float v1nPost = factor1 * v1n - factor2 * v1n + 2 * factor2 * v2n;
+                    float v2nPost = -factor1 * v2n + factor2 * v2n + 2 * factor1 * v1n;
+
+                    b1.V = v1nPost * normal + v1t * tangent;
+                    b2.V = v2nPost * normal + v2t * tangent;
+
+                    return new NextCollision(nc.Time, b1, b2);
+                }
+            }
+            return nc;
+        }
+        #endregion collision calculations
 
     }
 }

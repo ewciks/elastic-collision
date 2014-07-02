@@ -1,0 +1,1 @@
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collisionContent\obj\x86\Debug\collisionContent.contentprojResolveAssemblyReference.cache

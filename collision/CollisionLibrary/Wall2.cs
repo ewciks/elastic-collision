@@ -17,8 +17,10 @@ namespace CollisionLibrary
         #region constructors
         public Wall2(Vector2 coord, WallOrientation orientation)
         {
+            this.M = CollisionObject.WALL_MASS;
             this.Coordinates = coord;
-            this.Orientation = orientation;
+            if (orientation != null) this.Orientation = orientation;
+            else this.Orientation = WallOrientation.Right;
         }
 
         public Wall2() : this(Vector2.Zero, WallOrientation.Bottom) { }

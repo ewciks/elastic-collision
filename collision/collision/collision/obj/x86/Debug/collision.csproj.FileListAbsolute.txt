@@ -1,0 +1,6 @@
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\collision.exe
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\collision.pdb
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\obj\x86\Debug\collision.csprojResolveAssemblyReference.cache
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\obj\x86\Debug\collision.exe
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\obj\x86\Debug\collision.pdb

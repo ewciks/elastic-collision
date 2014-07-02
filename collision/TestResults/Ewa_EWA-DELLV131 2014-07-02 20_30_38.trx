@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="b659493a-3c30-45a8-80af-42057835cbd3" name="Ewa@EWA-DELLV131 2014-07-02 20:30:38" runUser="Ewa-DellV131\Ewa" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c4f4939b-3f88-4cfc-b325-a068545cd073">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Ewa_EWA-DELLV131 2014-07-02 20_30_38">
+      <DeploymentItem filename="C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibrary\bin\x86\Debug\CollisionLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-07-02T20:30:38.9830071+02:00" queuing="2014-07-02T20:30:40.0840701+02:00" start="2014-07-02T20:30:40.0990709+02:00" finish="2014-07-02T20:30:40.3500853+02:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="CalcPostImpactVBallBallTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="027a4800-8390-355f-bb69-f94026fedaec">
+      <Execution id="a7a2aeb8-c1f9-4f27-91b9-b2a0a2d570ef" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcPostImpactVBallBallTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="027a4800-8390-355f-bb69-f94026fedaec" executionId="a7a2aeb8-c1f9-4f27-91b9-b2a0a2d570ef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="a7a2aeb8-c1f9-4f27-91b9-b2a0a2d570ef" testId="027a4800-8390-355f-bb69-f94026fedaec" testName="CalcPostImpactVBallBallTest" computerName="EWA-DELLV131" duration="00:00:00.0357864" startTime="2014-07-02T20:30:40.1020711+02:00" endTime="2014-07-02T20:30:40.3230838+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a7a2aeb8-c1f9-4f27-91b9-b2a0a2d570ef">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;V: (-1,5, 0), coord: (0,01, 0), mass: 0,01, radius: 0,01&gt;. Actual:&lt;V: (2, 0), coord: (0,01, 0), mass: 0,01, radius: 0,01&gt;. </Message>
+          <StackTrace>   at CollisionLibraryTestProject.CollisionTest.CalcPostImpactVBallBallTest() in C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibraryTestProject\CollisionTest.cs:line 296
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>
