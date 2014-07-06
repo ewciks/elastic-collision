@@ -158,6 +158,23 @@ namespace CollisionLibraryTestProject
         }
 
         /// <summary>
+        ///A test for GetNextBallBallCollision
+        ///</summary>
+        [TestMethod()]
+        public void GetNextBallBallCollisionTestOneCollSameDir()
+        {
+            List<Ball2> balls = new List<Ball2>();
+            balls.Add(new Ball2(new Vector2(-1.0f, 0.0f), new Vector2(3.0f, 0.0f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(-2.0f, 0.0f), new Vector2(5.0f, 0.0f), 0.01f, 0.01f));
+            Collision target = new Collision(balls, new List<Wall2>());
+            target.GetNextBallBallCollision();
+            Assert.AreEqual(target.NextCollisions.Count, 1);
+            Assert.AreEqual(target.NextCollisions[0].Obj2, balls[1]);
+            Assert.AreEqual(target.NextCollisions[0].Obj1, balls[0]);
+            //string result = target.NextCollisions[0].Time + " / " + target.NextCollisions[0].Obj1.Id + " / " + target.NextCollisions[0].Obj2.Id;
+        }
+
+        /// <summary>
         ///A test for MoveBallsToTime
         ///</summary>
         [TestMethod()]

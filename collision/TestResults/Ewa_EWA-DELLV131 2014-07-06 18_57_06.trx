@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="b0e6fc13-9007-4268-ac10-fb54bb054cc8" name="Ewa@EWA-DELLV131 2014-07-06 18:57:06" runUser="Ewa-DellV131\Ewa" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c4f4939b-3f88-4cfc-b325-a068545cd073">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\GitHub\elastic_collision\elastic-collision\collision\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Ewa_EWA-DELLV131 2014-07-06 18_57_06">
+      <DeploymentItem filename="C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibrary\bin\x86\Debug\CollisionLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-07-06T18:57:06.9398495+02:00" queuing="2014-07-06T18:57:08.9539647+02:00" start="2014-07-06T18:57:08.9999673+02:00" finish="2014-07-06T18:57:10.0990301+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetNextBallBallCollisionTestOneCollSameDir" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="3e0141b4-db2c-c6c9-7b7a-c4dad6bc2bc3">
+      <Execution id="8700d6fb-e41e-46c0-bca3-b8a32fdbd186" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetNextBallBallCollisionTestOneCollSameDir" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="3e0141b4-db2c-c6c9-7b7a-c4dad6bc2bc3" executionId="8700d6fb-e41e-46c0-bca3-b8a32fdbd186" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="8700d6fb-e41e-46c0-bca3-b8a32fdbd186" testId="3e0141b4-db2c-c6c9-7b7a-c4dad6bc2bc3" testName="GetNextBallBallCollisionTestOneCollSameDir" computerName="EWA-DELLV131" duration="00:00:00.1165567" startTime="2014-07-06T18:57:09.0289689+02:00" endTime="2014-07-06T18:57:09.9680227+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8700d6fb-e41e-46c0-bca3-b8a32fdbd186">
+    </UnitTestResult>
+  </Results>
+</TestRun>

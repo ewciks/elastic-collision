@@ -10,6 +10,24 @@
       <Output>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\red_circle_100px.xnb</Output>
       <Time>2014-07-06T12:01:49.7845977+02:00</Time>
     </Item>
+    <Item>
+      <Source>counter.spritefont</Source>
+      <Name>counter</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\counter.xnb</Output>
+      <Time>2014-07-06T18:20:38.4366742+02:00</Time>
+    </Item>
+    <Item>
+      <Source>black_circle_100px.png</Source>
+      <Name>black_circle_100px</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\black_circle_100px.xnb</Output>
+      <Time>2014-07-06T19:50:31.6841503+02:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID Null="true" />

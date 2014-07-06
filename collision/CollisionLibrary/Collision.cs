@@ -135,15 +135,15 @@ namespace CollisionLibrary
             NextCollision nc = new NextCollision(NextCollisions[0].Time, new CollisionObject(), new CollisionObject());
             for (int i = 0; i < Balls.Count; i++)
             {
-                for (int j = i; j < Balls.Count; j++)
+                for (int j = i + 1; j < Balls.Count; j++)
                 {
-                    float xdiff = Balls[j].Coordinates.X - Balls[i].Coordinates.X;
-                    float ydiff = Balls[j].Coordinates.Y - Balls[i].Coordinates.Y;
-                    float vxdiff = Balls[j].V.X - Balls[i].V.X;
-                    float vydiff = Balls[j].V.Y - Balls[i].V.Y;
+                    float xdiff = Balls[i].Coordinates.X - Balls[j].Coordinates.X;
+                    float ydiff = Balls[i].Coordinates.Y - Balls[j].Coordinates.Y;
+                    float vxdiff = Balls[i].V.X - Balls[j].V.X;
+                    float vydiff = Balls[i].V.Y - Balls[j].V.Y;
                     float a = vxdiff * vxdiff + vydiff * vydiff;
                     float b = 2 * xdiff * vxdiff + 2 * ydiff * vydiff;
-                    float c = xdiff * xdiff + ydiff * ydiff - (float)Math.Pow(Balls[j].R + Balls[i].R, 2);
+                    float c = xdiff * xdiff + ydiff * ydiff - (float)Math.Pow(Balls[i].R + Balls[j].R, 2);
                     QuadraticEquation qe = new QuadraticEquation(a, b, c);
                     float time = qe.CalcSmallerPositiveX();
                     if (time >= 0 && time < nc.Time)

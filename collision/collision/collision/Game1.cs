@@ -20,14 +20,14 @@ namespace collision
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Collision collision;
-        //float timer = 0.1f;
-        //const float TIMER = 0.1f;
         const float METER_FACTOR = 2000.0f; // 1m = 2000 px, to have value in [m] you have to multiply it by METER
-        Texture2D ballsSpriteTexture;
-        Texture2D wallsSpriteTexture;
-        bool flag = false;
+        Texture2D ballsSpriteTextureRed, ballsSpriteTextureBlack;
+        bool isNextCollisionTimeKnown = false;
         float collisionTimer = 1000.0f;
         const float R_SCALE = 10000.0f;
+        int counter = 0;
+        SpriteFont font;
+        Vector2 fontPos;
 
         public Game1()
         {
@@ -45,9 +45,19 @@ namespace collision
         {
             // TODO: Add your initialization logic here
             List<Ball2> balls = new List<Ball2>();
-            balls.Add(new Ball2(new Vector2(0, 0.1f), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));  // vertical test
-            balls.Add(new Ball2(new Vector2(0.1f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));  // horizontal test
-            balls.Add(new Ball2(new Vector2(0.1f, 0.2f), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));  // inclined test
+            // ball-wall and ball-ball test
+            balls.Add(new Ball2(new Vector2(0, 0.1f), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));  // ball-wall vertical test
+            balls.Add(new Ball2(new Vector2(0.1f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));  // ball-wall horizontal test
+            balls.Add(new Ball2(new Vector2(0.1f, 0.2f), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));  // ball-wall inclined test
+            
+            // ball-ball horizontal test
+            balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));
+            balls.Add(new Ball2(new Vector2(-0.1f, 0), new Vector2(0.4f, 0.01f), 0.01f, 0.00001f));
+             
+            // ball-ball vertical test
+            balls.Add(new Ball2(new Vector2(0.0f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));
+            balls.Add(new Ball2(new Vector2(0.0f, -0.1f), new Vector2(0.1f, 0.15f), 0.01f, 0.00001f)); 
+             
             List<Wall2> walls = new List<Wall2>();
             walls.Add(new Wall2(new Vector2(0, 0), WallOrientation.Left));
             walls.Add(new Wall2(new Vector2(GraphicsDevice.Viewport.Bounds.Width / METER_FACTOR, 0), WallOrientation.Right));
@@ -69,8 +79,10 @@ namespace collision
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            ballsSpriteTexture = this.Content.Load<Texture2D>("red_circle_100px");
-            wallsSpriteTexture = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            ballsSpriteTextureRed = this.Content.Load<Texture2D>("red_circle_100px");
+            ballsSpriteTextureBlack = this.Content.Load<Texture2D>("black_circle_100px");
+            font = this.Content.Load<SpriteFont>("counter");
+            fontPos = new Vector2(0, 0);
         }
 
         /// <summary>
@@ -96,17 +108,27 @@ namespace collision
             // TODO: Add your update logic here
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            if (flag == false)
+            if (!isNextCollisionTimeKnown)
             {
                 collision.GetNextBallWallCollision();
+                collision.GetNextBallBallCollision();
                 collisionTimer = collision.NextCollisions[0].Time;
-                flag = true;
+                isNextCollisionTimeKnown = true;
             }
             collisionTimer -= elapsed;
             if (collisionTimer <= 0)
             {
-                collision.CalcPostImpactVBallWall(collision.NextCollisions[0]);
-                flag = false;
+                if ((collision.NextCollisions[0].Obj1.M < Wall2.WALL_MASS && collision.NextCollisions[0].Obj2.M >= Wall2.WALL_MASS) ||
+                    (collision.NextCollisions[0].Obj1.M >= Wall2.WALL_MASS && collision.NextCollisions[0].Obj2.M < Wall2.WALL_MASS))
+                {
+                    collision.CalcPostImpactVBallWall(collision.NextCollisions[0]);
+                }
+                else
+                {
+                    collision.CalcPostImpactVBallBall(collision.NextCollisions[0]);
+                }
+                isNextCollisionTimeKnown = false;
+                counter++;
             }
 
             collision.MoveBallsToTime(elapsed);
@@ -126,8 +148,16 @@ namespace collision
             spriteBatch.Begin();
             foreach (Ball2 b in collision.Balls)
             {
-                spriteBatch.Draw(ballsSpriteTexture, (b.Coordinates + new Vector2(b.R, b.R)) * METER_FACTOR, null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
+                if (b.Id % 2 == 0)
+                {
+                    spriteBatch.Draw(ballsSpriteTextureBlack, (b.Coordinates + new Vector2(b.R, b.R)) * METER_FACTOR, null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
+                }
+                else
+                {
+                    spriteBatch.Draw(ballsSpriteTextureRed, (b.Coordinates + new Vector2(b.R, b.R)) * METER_FACTOR, null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
+                }
             }
+            spriteBatch.DrawString(font, counter.ToString(), fontPos, Color.Green);
             spriteBatch.End();
 
 
