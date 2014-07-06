@@ -13,15 +13,15 @@ using Microsoft.Xna.Framework.Media;
 namespace CollisionLibrary
 {
     /// <summary>
-    /// Class of vectors transformations need in collision simulation
+    /// Class of vectors transformations need in collision simulation.
     /// </summary>
     public static class Transformation
     {
         /// <summary>
         /// Calculates unit normal vector to circle (ball) b1 in point of contact
         /// </summary>
-        /// <param name="b1"></param>
-        /// <param name="b2"></param>
+        /// <param name="b1">First ball in collision.</param>
+        /// <param name="b2">Second ball in collision.</param>
         /// <returns></returns>
         public static Vector2 CalcNormal(Ball2 b1, Ball2 b2)
         {
@@ -36,10 +36,10 @@ namespace CollisionLibrary
         }
 
         /// <summary>
-        /// Calculates tangent vector
+        /// Calculates tangent vector.
         /// </summary>
-        /// <param name="b1"></param>
-        /// <param name="b2"></param>
+        /// <param name="b1">First ball in collision.</param>
+        /// <param name="b2">Second ball in collision.</param>
         /// <returns></returns>
         public static Vector2 CalcTangent(Ball2 b1, Ball2 b2)
         {
@@ -54,9 +54,9 @@ namespace CollisionLibrary
         }
 
         /// <summary>
-        /// Calculates tangent vector having already calculated normal vector
+        /// Calculates tangent vector having already calculated normal vector.
         /// </summary>
-        /// <param name="normal"></param>
+        /// <param name="normal">Normal vector.</param>
         /// <returns></returns>
         public static Vector2 CalcTangent(Vector2 normal)
         {
@@ -64,11 +64,10 @@ namespace CollisionLibrary
         }
 
         /// <summary>
-        /// Projection of vector v to axis descriped by vector 'axis'.
-        /// As a fact it's just a dot product.
+        /// Projection of vector v to axis descriped by vector 'axis'. As a fact it's just a dot product.
         /// </summary>
-        /// <param name="v">projected vector</param>
-        /// <param name="axis">projected axis</param>
+        /// <param name="v">Projected vector.</param>
+        /// <param name="axis">Axis on which vector will be projected.</param>
         /// <returns></returns>
         public static float Projection(Vector2 v, Vector2 axis)
         {

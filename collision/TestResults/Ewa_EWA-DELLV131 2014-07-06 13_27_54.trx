@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="deb36165-d3a1-4631-962b-999b15eb77ea" name="Ewa@EWA-DELLV131 2014-07-06 13:27:54" runUser="Ewa-DellV131\Ewa" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c4f4939b-3f88-4cfc-b325-a068545cd073">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Ewa_EWA-DELLV131 2014-07-06 13_27_54">
+      <DeploymentItem filename="C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibrary\bin\x86\Debug\CollisionLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-07-06T13:27:54.4329987+02:00" queuing="2014-07-06T13:27:55.8540800+02:00" start="2014-07-06T13:27:55.8660807+02:00" finish="2014-07-06T13:27:56.3081059+02:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="29" executed="29" passed="27" error="0" failed="2" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetNextBallBallCollisionTestTwoColl" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="7ed5f16e-f344-44ac-916b-65054d8bd01b">
+      <Execution id="2de4d111-7033-4f64-9083-ce96b4a360d1" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetNextBallBallCollisionTestTwoColl" />
+    </UnitTest>
+    <UnitTest name="CalcTangentTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="4634d7bf-d54b-df2a-1a73-f348a6c652ae">
+      <Execution id="c050acf5-916a-4706-bd92-288d6032549c" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.TransformationTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcTangentTest" />
+    </UnitTest>
+    <UnitTest name="RTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="bbe8b09c-135d-d595-ee98-0f76cfe71c8b">
+      <Execution id="5b53d340-44a2-46b8-b2dc-0d0e488e8004" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="RTest" />
+    </UnitTest>
+    <UnitTest name="CalcPostImpactVBallWallTestLeftWallSecondObjBall" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="784e8f61-09fe-d925-2bfc-30883fabec82">
+      <Execution id="4fa793d0-02f7-49c4-95e9-58c9d2c77b05" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcPostImpactVBallWallTestLeftWallSecondObjBall" />
+    </UnitTest>
+    <UnitTest name="InstancesTestBallAndWall" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="7d761d72-251c-20d5-aab6-9dcc35eeaf1c">
+      <Execution id="23349897-d53e-462f-9c75-2cd7c14aafc3" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="InstancesTestBallAndWall" />
+    </UnitTest>
+    <UnitTest name="CalcPostImpactVBallWallTestBottom" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="34353e91-ace8-7a0f-99a2-039d8f4a7db2">
+      <Execution id="ec794f78-9053-40de-b756-026684228802" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcPostImpactVBallWallTestBottom" />
+    </UnitTest>
+    <UnitTest name="CalcPostImpactVBallWallTestRight" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="73f76c6c-5436-6e0a-c0de-a320db1d0190">
+      <Execution id="3d5dfa1c-f9d9-4a42-82bd-f004dd29ae4d" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcPostImpactVBallWallTestRight" />
+    </UnitTest>
+    <UnitTest name="MoveBallsToCollisionTimeTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="a9dd207d-b17d-56fb-fd27-f7e87e1a2818">
+      <Execution id="a9c73a70-f430-4906-a46f-a53d1e642c9c" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MoveBallsToCollisionTimeTest" />
+    </UnitTest>
+    <UnitTest name="InstancesTestBallWallBall" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="032206b2-427b-faa8-3e97-a121db3e0a31">
+      <Execution id="ae1714e0-818c-4ecd-b2a4-7b9432a2d5b3" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="InstancesTestBallWallBall" />
+    </UnitTest>
+    <UnitTest name="ProjectionTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="e8258cd7-530e-8306-5955-7a3457761eb3">
+      <Execution id="dbcd6695-00a7-415c-8b68-59790add7211" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.TransformationTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="ProjectionTest" />
+    </UnitTest>
+    <UnitTest name="Ball2ConstructorTestStationaryWithCoord" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="58ee5bcc-8c6f-c602-a62f-ce50ed8cb54d">
+      <Execution id="529c4de9-0a55-4c93-a891-83ceae4ef247" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Ball2ConstructorTestStationaryWithCoord" />
+    </UnitTest>
+    <UnitTest name="CalcDeltaTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="bb2906cf-c1cb-d472-a450-236ab18fe0d2">
+      <DeploymentItems>
+        <DeploymentItem filename="CollisionLibrary.dll" />
+      </DeploymentItems>
+      <Execution id="263a353d-070b-49e8-a97b-736a23a80d26" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.QuadraticEquationTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcDeltaTest" />
+    </UnitTest>
+    <UnitTest name="CalcPostImpactVBallWallTestLeftWallFirstObjBall" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="40aa7ec1-7f7a-70fb-9478-63e77f316a25">
+      <Execution id="feb68046-0d0e-482c-bcd1-e1833310ac1f" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcPostImpactVBallWallTestLeftWallFirstObjBall" />
+    </UnitTest>
+    <UnitTest name="CalcPostImpactVBallWallTestTop" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="668cf586-4fac-4e50-8a1d-2acfc3cbf178">
+      <Execution id="bee21113-1153-42f5-b156-a6304ec86f93" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcPostImpactVBallWallTestTop" />
+    </UnitTest>
+    <UnitTest name="CalcNormalTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="91370910-7b93-11ae-cf00-2de71bf169a8">
+      <Execution id="8f02fb4a-ead7-4f1b-aa06-9da201a5cd46" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.TransformationTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcNormalTest" />
+    </UnitTest>
+    <UnitTest name="InstancesTestTwoBalls" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="a0e243aa-6d6f-0caa-119c-cc5cf78a3b81">
+      <Execution id="47b7edc5-4c0c-4882-adb6-b1cc9d480699" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="InstancesTestTwoBalls" />
+    </UnitTest>
+    <UnitTest name="MTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="c4c0d519-5736-4288-25ad-cc60957d2be9">
+      <Execution id="58da574f-6b57-47fe-9f94-71464ee88243" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MTest" />
+    </UnitTest>
+    <UnitTest name="VTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="30e7782c-8729-7239-4543-6500720aba5e">
+      <Execution id="d4f66935-87f9-427f-b063-012476954cb5" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="VTest" />
+    </UnitTest>
+    <UnitTest name="CoordinatesTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="c1863ef5-7966-c091-6434-a5be8c7371cc">
+      <Execution id="bafdd564-f108-4578-89cc-6bd3827a26bf" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CoordinatesTest" />
+    </UnitTest>
+    <UnitTest name="GetBallWallCollisionTimeTestRightWall" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="f8a6fddc-bbdc-a807-1c05-aef0110fa10e">
+      <DeploymentItems>
+        <DeploymentItem filename="CollisionLibrary.dll" />
+      </DeploymentItems>
+      <Execution id="45d74bae-bac0-4aa5-aaa8-5b4ce8f9d2a0" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetBallWallCollisionTimeTestRightWall" />
+    </UnitTest>
+    <UnitTest name="GetNextBallWallCollisionTestTwoDiffParrarelBalls" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="83e512b6-d982-3129-eb57-35fb4084a312">
+      <DeploymentItems>
+        <DeploymentItem filename="CollisionLibrary.dll" />
+      </DeploymentItems>
+      <Execution id="5bd684f5-d378-4392-b6b9-91180e7aa5e9" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetNextBallWallCollisionTestTwoDiffParrarelBalls" />
+    </UnitTest>
+    <UnitTest name="Ball2ConstructorTest2" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="dd22bf8f-6c73-d575-32f8-6d9ecb277f31">
+      <Execution id="be9bafc4-5ea7-452b-801d-50827f956ddb" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Ball2ConstructorTest2" />
+    </UnitTest>
+    <UnitTest name="CalcTangentTestWithGivenNormal" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="c958cc52-009c-8b64-166e-da652b2033e8">
+      <Execution id="bbe64c84-0545-4beb-8ed4-7e9aa32986a9" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.TransformationTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcTangentTestWithGivenNormal" />
+    </UnitTest>
+    <UnitTest name="CalcPostImpactVBallBallTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="027a4800-8390-355f-bb69-f94026fedaec">
+      <Execution id="e2f5a2fc-6c91-4326-9894-08f8ca30bfae" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcPostImpactVBallBallTest" />
+    </UnitTest>
+    <UnitTest name="GetNextBallWallCollisionTestTwoTheSameParrarelBalls" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="37b52716-da34-c15f-e28a-1291c389449e">
+      <DeploymentItems>
+        <DeploymentItem filename="CollisionLibrary.dll" />
+      </DeploymentItems>
+      <Execution id="47ccecd6-f853-43af-aeef-9a518805fad5" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetNextBallWallCollisionTestTwoTheSameParrarelBalls" />
+    </UnitTest>
+    <UnitTest name="GetNextBallBallCollisionTestOneColl" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="5706bc5c-9e11-4309-7da3-559b179a1156">
+      <Execution id="90b699e9-9f23-4117-ae38-51412ac1fca2" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetNextBallBallCollisionTestOneColl" />
+    </UnitTest>
+    <UnitTest name="Ball2ConstructorTestDefault" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="01dbbfbe-7c0f-f7a5-974d-f83eb21e709f">
+      <Execution id="5a7fd094-5b06-4a5b-9b5e-77ef45e598a9" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.Ball2Test, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Ball2ConstructorTestDefault" />
+    </UnitTest>
+    <UnitTest name="CalcSmallerPositiveXTest" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="04aec189-043e-ca62-f16f-2761a476fe4e">
+      <DeploymentItems>
+        <DeploymentItem filename="CollisionLibrary.dll" />
+      </DeploymentItems>
+      <Execution id="2cd51750-d9f7-435a-b92f-53a8c3bd3089" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.QuadraticEquationTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcSmallerPositiveXTest" />
+    </UnitTest>
+    <UnitTest name="MoveBallsToCollisionTimeTestCheckIfNextCollisionsIsUpdated" storage="c:\github\elastic_collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="33a9f688-be7f-bd2e-92c2-3b4e82ae67f6">
+      <Execution id="77cd51d7-7544-4d04-9c08-778e2b43aee7" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="MoveBallsToCollisionTimeTestCheckIfNextCollisionsIsUpdated" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="01dbbfbe-7c0f-f7a5-974d-f83eb21e709f" executionId="5a7fd094-5b06-4a5b-9b5e-77ef45e598a9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="027a4800-8390-355f-bb69-f94026fedaec" executionId="e2f5a2fc-6c91-4326-9894-08f8ca30bfae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="032206b2-427b-faa8-3e97-a121db3e0a31" executionId="ae1714e0-818c-4ecd-b2a4-7b9432a2d5b3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="04aec189-043e-ca62-f16f-2761a476fe4e" executionId="2cd51750-d9f7-435a-b92f-53a8c3bd3089" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="30e7782c-8729-7239-4543-6500720aba5e" executionId="d4f66935-87f9-427f-b063-012476954cb5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="33a9f688-be7f-bd2e-92c2-3b4e82ae67f6" executionId="77cd51d7-7544-4d04-9c08-778e2b43aee7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="34353e91-ace8-7a0f-99a2-039d8f4a7db2" executionId="ec794f78-9053-40de-b756-026684228802" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="37b52716-da34-c15f-e28a-1291c389449e" executionId="47ccecd6-f853-43af-aeef-9a518805fad5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="40aa7ec1-7f7a-70fb-9478-63e77f316a25" executionId="feb68046-0d0e-482c-bcd1-e1833310ac1f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4634d7bf-d54b-df2a-1a73-f348a6c652ae" executionId="c050acf5-916a-4706-bd92-288d6032549c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5706bc5c-9e11-4309-7da3-559b179a1156" executionId="90b699e9-9f23-4117-ae38-51412ac1fca2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="58ee5bcc-8c6f-c602-a62f-ce50ed8cb54d" executionId="529c4de9-0a55-4c93-a891-83ceae4ef247" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="668cf586-4fac-4e50-8a1d-2acfc3cbf178" executionId="bee21113-1153-42f5-b156-a6304ec86f93" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="73f76c6c-5436-6e0a-c0de-a320db1d0190" executionId="3d5dfa1c-f9d9-4a42-82bd-f004dd29ae4d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="784e8f61-09fe-d925-2bfc-30883fabec82" executionId="4fa793d0-02f7-49c4-95e9-58c9d2c77b05" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7d761d72-251c-20d5-aab6-9dcc35eeaf1c" executionId="23349897-d53e-462f-9c75-2cd7c14aafc3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7ed5f16e-f344-44ac-916b-65054d8bd01b" executionId="2de4d111-7033-4f64-9083-ce96b4a360d1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="83e512b6-d982-3129-eb57-35fb4084a312" executionId="5bd684f5-d378-4392-b6b9-91180e7aa5e9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="91370910-7b93-11ae-cf00-2de71bf169a8" executionId="8f02fb4a-ead7-4f1b-aa06-9da201a5cd46" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a0e243aa-6d6f-0caa-119c-cc5cf78a3b81" executionId="47b7edc5-4c0c-4882-adb6-b1cc9d480699" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a9dd207d-b17d-56fb-fd27-f7e87e1a2818" executionId="a9c73a70-f430-4906-a46f-a53d1e642c9c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bb2906cf-c1cb-d472-a450-236ab18fe0d2" executionId="263a353d-070b-49e8-a97b-736a23a80d26" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bbe8b09c-135d-d595-ee98-0f76cfe71c8b" executionId="5b53d340-44a2-46b8-b2dc-0d0e488e8004" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c1863ef5-7966-c091-6434-a5be8c7371cc" executionId="bafdd564-f108-4578-89cc-6bd3827a26bf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c4c0d519-5736-4288-25ad-cc60957d2be9" executionId="58da574f-6b57-47fe-9f94-71464ee88243" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c958cc52-009c-8b64-166e-da652b2033e8" executionId="bbe64c84-0545-4beb-8ed4-7e9aa32986a9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dd22bf8f-6c73-d575-32f8-6d9ecb277f31" executionId="be9bafc4-5ea7-452b-801d-50827f956ddb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e8258cd7-530e-8306-5955-7a3457761eb3" executionId="dbcd6695-00a7-415c-8b68-59790add7211" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f8a6fddc-bbdc-a807-1c05-aef0110fa10e" executionId="45d74bae-bac0-4aa5-aaa8-5b4ce8f9d2a0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="5a7fd094-5b06-4a5b-9b5e-77ef45e598a9" testId="01dbbfbe-7c0f-f7a5-974d-f83eb21e709f" testName="Ball2ConstructorTestDefault" computerName="EWA-DELLV131" duration="00:00:00.0164300" startTime="2014-07-06T13:27:55.8680808+02:00" endTime="2014-07-06T13:27:56.0910935+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5a7fd094-5b06-4a5b-9b5e-77ef45e598a9">
+    </UnitTestResult>
+    <UnitTestResult executionId="e2f5a2fc-6c91-4326-9894-08f8ca30bfae" testId="027a4800-8390-355f-bb69-f94026fedaec" testName="CalcPostImpactVBallBallTest" computerName="EWA-DELLV131" duration="00:00:00.0030819" startTime="2014-07-06T13:27:56.0920936+02:00" endTime="2014-07-06T13:27:56.0980939+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e2f5a2fc-6c91-4326-9894-08f8ca30bfae">
+    </UnitTestResult>
+    <UnitTestResult executionId="ae1714e0-818c-4ecd-b2a4-7b9432a2d5b3" testId="032206b2-427b-faa8-3e97-a121db3e0a31" testName="InstancesTestBallWallBall" computerName="EWA-DELLV131" duration="00:00:00.0006760" startTime="2014-07-06T13:27:56.0990940+02:00" endTime="2014-07-06T13:27:56.1030942+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ae1714e0-818c-4ecd-b2a4-7b9432a2d5b3">
+    </UnitTestResult>
+    <UnitTestResult executionId="2cd51750-d9f7-435a-b92f-53a8c3bd3089" testId="04aec189-043e-ca62-f16f-2761a476fe4e" testName="CalcSmallerPositiveXTest" computerName="EWA-DELLV131" duration="00:00:00.0006790" startTime="2014-07-06T13:27:56.1040943+02:00" endTime="2014-07-06T13:27:56.1510970+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2cd51750-d9f7-435a-b92f-53a8c3bd3089">
+    </UnitTestResult>
+    <UnitTestResult executionId="d4f66935-87f9-427f-b063-012476954cb5" testId="30e7782c-8729-7239-4543-6500720aba5e" testName="VTest" computerName="EWA-DELLV131" duration="00:00:00.0002796" startTime="2014-07-06T13:27:56.1520970+02:00" endTime="2014-07-06T13:27:56.1550972+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d4f66935-87f9-427f-b063-012476954cb5">
+    </UnitTestResult>
+    <UnitTestResult executionId="77cd51d7-7544-4d04-9c08-778e2b43aee7" testId="33a9f688-be7f-bd2e-92c2-3b4e82ae67f6" testName="MoveBallsToCollisionTimeTestCheckIfNextCollisionsIsUpdated" computerName="EWA-DELLV131" duration="00:00:00.0013307" startTime="2014-07-06T13:27:56.1560972+02:00" endTime="2014-07-06T13:27:56.1600975+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="77cd51d7-7544-4d04-9c08-778e2b43aee7">
+    </UnitTestResult>
+    <UnitTestResult executionId="ec794f78-9053-40de-b756-026684228802" testId="34353e91-ace8-7a0f-99a2-039d8f4a7db2" testName="CalcPostImpactVBallWallTestBottom" computerName="EWA-DELLV131" duration="00:00:00.0012734" startTime="2014-07-06T13:27:56.1610975+02:00" endTime="2014-07-06T13:27:56.1650978+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec794f78-9053-40de-b756-026684228802">
+    </UnitTestResult>
+    <UnitTestResult executionId="47ccecd6-f853-43af-aeef-9a518805fad5" testId="37b52716-da34-c15f-e28a-1291c389449e" testName="GetNextBallWallCollisionTestTwoTheSameParrarelBalls" computerName="EWA-DELLV131" duration="00:00:00.0024823" startTime="2014-07-06T13:27:56.1660978+02:00" endTime="2014-07-06T13:27:56.1700981+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="47ccecd6-f853-43af-aeef-9a518805fad5">
+    </UnitTestResult>
+    <UnitTestResult executionId="feb68046-0d0e-482c-bcd1-e1833310ac1f" testId="40aa7ec1-7f7a-70fb-9478-63e77f316a25" testName="CalcPostImpactVBallWallTestLeftWallFirstObjBall" computerName="EWA-DELLV131" duration="00:00:00.0004272" startTime="2014-07-06T13:27:56.1720982+02:00" endTime="2014-07-06T13:27:56.1750983+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="feb68046-0d0e-482c-bcd1-e1833310ac1f">
+    </UnitTestResult>
+    <UnitTestResult executionId="c050acf5-916a-4706-bd92-288d6032549c" testId="4634d7bf-d54b-df2a-1a73-f348a6c652ae" testName="CalcTangentTest" computerName="EWA-DELLV131" duration="00:00:00.0006568" startTime="2014-07-06T13:27:56.1760984+02:00" endTime="2014-07-06T13:27:56.1790986+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c050acf5-916a-4706-bd92-288d6032549c">
+    </UnitTestResult>
+    <UnitTestResult executionId="90b699e9-9f23-4117-ae38-51412ac1fca2" testId="5706bc5c-9e11-4309-7da3-559b179a1156" testName="GetNextBallBallCollisionTestOneColl" computerName="EWA-DELLV131" duration="00:00:00.0013513" startTime="2014-07-06T13:27:56.1790986+02:00" endTime="2014-07-06T13:27:56.1830988+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="90b699e9-9f23-4117-ae38-51412ac1fca2">
+    </UnitTestResult>
+    <UnitTestResult executionId="529c4de9-0a55-4c93-a891-83ceae4ef247" testId="58ee5bcc-8c6f-c602-a62f-ce50ed8cb54d" testName="Ball2ConstructorTestStationaryWithCoord" computerName="EWA-DELLV131" duration="00:00:00.0002339" startTime="2014-07-06T13:27:56.1840989+02:00" endTime="2014-07-06T13:27:56.1860990+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="529c4de9-0a55-4c93-a891-83ceae4ef247">
+    </UnitTestResult>
+    <UnitTestResult executionId="bee21113-1153-42f5-b156-a6304ec86f93" testId="668cf586-4fac-4e50-8a1d-2acfc3cbf178" testName="CalcPostImpactVBallWallTestTop" computerName="EWA-DELLV131" duration="00:00:00.0003450" startTime="2014-07-06T13:27:56.1870990+02:00" endTime="2014-07-06T13:27:56.1950995+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bee21113-1153-42f5-b156-a6304ec86f93">
+    </UnitTestResult>
+    <UnitTestResult executionId="3d5dfa1c-f9d9-4a42-82bd-f004dd29ae4d" testId="73f76c6c-5436-6e0a-c0de-a320db1d0190" testName="CalcPostImpactVBallWallTestRight" computerName="EWA-DELLV131" duration="00:00:00.0003686" startTime="2014-07-06T13:27:56.1960995+02:00" endTime="2014-07-06T13:27:56.1990997+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3d5dfa1c-f9d9-4a42-82bd-f004dd29ae4d">
+    </UnitTestResult>
+    <UnitTestResult executionId="4fa793d0-02f7-49c4-95e9-58c9d2c77b05" testId="784e8f61-09fe-d925-2bfc-30883fabec82" testName="CalcPostImpactVBallWallTestLeftWallSecondObjBall" computerName="EWA-DELLV131" duration="00:00:00.0003472" startTime="2014-07-06T13:27:56.1990997+02:00" endTime="2014-07-06T13:27:56.2020999+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4fa793d0-02f7-49c4-95e9-58c9d2c77b05">
+    </UnitTestResult>
+    <UnitTestResult executionId="23349897-d53e-462f-9c75-2cd7c14aafc3" testId="7d761d72-251c-20d5-aab6-9dcc35eeaf1c" testName="InstancesTestBallAndWall" computerName="EWA-DELLV131" duration="00:00:00.0170256" startTime="2014-07-06T13:27:56.2030999+02:00" endTime="2014-07-06T13:27:56.2231011+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23349897-d53e-462f-9c75-2cd7c14aafc3">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;2&gt;. Actual:&lt;17&gt;. </Message>
+          <StackTrace>   at CollisionLibraryTestProject.Ball2Test.InstancesTestBallAndWall() in C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibraryTestProject\Ball2Test.cs:line 189
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2de4d111-7033-4f64-9083-ce96b4a360d1" testId="7ed5f16e-f344-44ac-916b-65054d8bd01b" testName="GetNextBallBallCollisionTestTwoColl" computerName="EWA-DELLV131" duration="00:00:00.0005550" startTime="2014-07-06T13:27:56.2251012+02:00" endTime="2014-07-06T13:27:56.2291014+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2de4d111-7033-4f64-9083-ce96b4a360d1">
+    </UnitTestResult>
+    <UnitTestResult executionId="5bd684f5-d378-4392-b6b9-91180e7aa5e9" testId="83e512b6-d982-3129-eb57-35fb4084a312" testName="GetNextBallWallCollisionTestTwoDiffParrarelBalls" computerName="EWA-DELLV131" duration="00:00:00.0006529" startTime="2014-07-06T13:27:56.2311015+02:00" endTime="2014-07-06T13:27:56.2351018+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5bd684f5-d378-4392-b6b9-91180e7aa5e9">
+    </UnitTestResult>
+    <UnitTestResult executionId="8f02fb4a-ead7-4f1b-aa06-9da201a5cd46" testId="91370910-7b93-11ae-cf00-2de71bf169a8" testName="CalcNormalTest" computerName="EWA-DELLV131" duration="00:00:00.0004088" startTime="2014-07-06T13:27:56.2361018+02:00" endTime="2014-07-06T13:27:56.2391020+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8f02fb4a-ead7-4f1b-aa06-9da201a5cd46">
+    </UnitTestResult>
+    <UnitTestResult executionId="47b7edc5-4c0c-4882-adb6-b1cc9d480699" testId="a0e243aa-6d6f-0caa-119c-cc5cf78a3b81" testName="InstancesTestTwoBalls" computerName="EWA-DELLV131" duration="00:00:00.0020526" startTime="2014-07-06T13:27:56.2411021+02:00" endTime="2014-07-06T13:27:56.2451023+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="47b7edc5-4c0c-4882-adb6-b1cc9d480699">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;2&gt;. Actual:&lt;20&gt;. </Message>
+          <StackTrace>   at CollisionLibraryTestProject.Ball2Test.InstancesTestTwoBalls() in C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibraryTestProject\Ball2Test.cs:line 176
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a9c73a70-f430-4906-a46f-a53d1e642c9c" testId="a9dd207d-b17d-56fb-fd27-f7e87e1a2818" testName="MoveBallsToCollisionTimeTest" computerName="EWA-DELLV131" duration="00:00:00.0006872" startTime="2014-07-06T13:27:56.2461024+02:00" endTime="2014-07-06T13:27:56.2501026+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a9c73a70-f430-4906-a46f-a53d1e642c9c">
+    </UnitTestResult>
+    <UnitTestResult executionId="263a353d-070b-49e8-a97b-736a23a80d26" testId="bb2906cf-c1cb-d472-a450-236ab18fe0d2" testName="CalcDeltaTest" computerName="EWA-DELLV131" duration="00:00:00.0033436" startTime="2014-07-06T13:27:56.2501026+02:00" endTime="2014-07-06T13:27:56.2571030+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="263a353d-070b-49e8-a97b-736a23a80d26">
+    </UnitTestResult>
+    <UnitTestResult executionId="5b53d340-44a2-46b8-b2dc-0d0e488e8004" testId="bbe8b09c-135d-d595-ee98-0f76cfe71c8b" testName="RTest" computerName="EWA-DELLV131" duration="00:00:00.0003014" startTime="2014-07-06T13:27:56.2581031+02:00" endTime="2014-07-06T13:27:56.2601032+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5b53d340-44a2-46b8-b2dc-0d0e488e8004">
+    </UnitTestResult>
+    <UnitTestResult executionId="bafdd564-f108-4578-89cc-6bd3827a26bf" testId="c1863ef5-7966-c091-6434-a5be8c7371cc" testName="CoordinatesTest" computerName="EWA-DELLV131" duration="00:00:00.0002617" startTime="2014-07-06T13:27:56.2611033+02:00" endTime="2014-07-06T13:27:56.2641034+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bafdd564-f108-4578-89cc-6bd3827a26bf">
+    </UnitTestResult>
+    <UnitTestResult executionId="58da574f-6b57-47fe-9f94-71464ee88243" testId="c4c0d519-5736-4288-25ad-cc60957d2be9" testName="MTest" computerName="EWA-DELLV131" duration="00:00:00.0002805" startTime="2014-07-06T13:27:56.2651035+02:00" endTime="2014-07-06T13:27:56.2681037+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="58da574f-6b57-47fe-9f94-71464ee88243">
+    </UnitTestResult>
+    <UnitTestResult executionId="bbe64c84-0545-4beb-8ed4-7e9aa32986a9" testId="c958cc52-009c-8b64-166e-da652b2033e8" testName="CalcTangentTestWithGivenNormal" computerName="EWA-DELLV131" duration="00:00:00.0002215" startTime="2014-07-06T13:27:56.2691037+02:00" endTime="2014-07-06T13:27:56.2711038+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bbe64c84-0545-4beb-8ed4-7e9aa32986a9">
+    </UnitTestResult>
+    <UnitTestResult executionId="be9bafc4-5ea7-452b-801d-50827f956ddb" testId="dd22bf8f-6c73-d575-32f8-6d9ecb277f31" testName="Ball2ConstructorTest2" computerName="EWA-DELLV131" duration="00:00:00.0002779" startTime="2014-07-06T13:27:56.2721039+02:00" endTime="2014-07-06T13:27:56.2751041+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="be9bafc4-5ea7-452b-801d-50827f956ddb">
+    </UnitTestResult>
+    <UnitTestResult executionId="dbcd6695-00a7-415c-8b68-59790add7211" testId="e8258cd7-530e-8306-5955-7a3457761eb3" testName="ProjectionTest" computerName="EWA-DELLV131" duration="00:00:00.0002394" startTime="2014-07-06T13:27:56.2771042+02:00" endTime="2014-07-06T13:27:56.2801043+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dbcd6695-00a7-415c-8b68-59790add7211">
+    </UnitTestResult>
+    <UnitTestResult executionId="45d74bae-bac0-4aa5-aaa8-5b4ce8f9d2a0" testId="f8a6fddc-bbdc-a807-1c05-aef0110fa10e" testName="GetBallWallCollisionTimeTestRightWall" computerName="EWA-DELLV131" duration="00:00:00.0003190" startTime="2014-07-06T13:27:56.2811044+02:00" endTime="2014-07-06T13:27:56.2831045+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="45d74bae-bac0-4aa5-aaa8-5b4ce8f9d2a0">
+    </UnitTestResult>
+  </Results>
+</TestRun>

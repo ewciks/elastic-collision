@@ -171,7 +171,7 @@ namespace CollisionLibraryTestProject
         {
             Ball2 target = new Ball2();
             Ball2 target2 = new Ball2();
-            int expected = 2;
+            int expected = CollisionObject.GetActiveInstances();
             int actual = target2.Id;
             Assert.AreEqual(expected, actual);
         }
@@ -184,7 +184,7 @@ namespace CollisionLibraryTestProject
         {
             Ball2 target = new Ball2();
             Wall2 target2 = new Wall2();
-            int expected = 2;
+            int expected = CollisionObject.GetActiveInstances();
             int actual = target2.Id;
             Assert.AreEqual(expected, actual);
         }
@@ -198,7 +198,7 @@ namespace CollisionLibraryTestProject
             Ball2 target = new Ball2();
             Wall2 target2 = new Wall2();
             Ball2 target3 = new Ball2();
-            int expected = 2;
+            int expected = CollisionObject.GetActiveInstances() - 1;
             int actual = target2.Id;
             Assert.AreEqual(expected, actual);
         }

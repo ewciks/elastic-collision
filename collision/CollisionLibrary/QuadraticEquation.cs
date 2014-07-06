@@ -5,6 +5,9 @@ using System.Text;
 
 namespace CollisionLibrary
 {
+    /// <summary>
+    /// Class for calculating the smallest positive solution of quadratic equation.
+    /// </summary>
     public class QuadraticEquation
     {
         #region fields
@@ -17,29 +20,38 @@ namespace CollisionLibrary
         #endregion
 
         #region constructors
+        /// <summary>
+        /// Constructor with parameters for quadratic equation. For null substitutes with zero values.
+        /// </summary>
+        /// <param name="a">Parameter for second power argument.</param>
+        /// <param name="b">Parameter for first power argument.</param>
+        /// <param name="c">Parameter for zero power argument.</param>
         public QuadraticEquation(float a, float b, float c)
         {
-            this.a = a;
-            this.b = b;
-            this.c = c;
+            if (a != null) this.a = a; else this.a = 0.0f;
+            if (b != null) this.b = b; else this.b = 0.0f;
+            if (c != null) this.c = c; else this.c = 0.0f;
         }
 
         /// <summary>
-        /// Default constructor
+        /// Default constructor with zero values.
         /// </summary>
         public QuadraticEquation() : this(0.0f, 0.0f, 0.0f) { }
-        #endregion
+        #endregion constructors
 
+        #region operations
+        /// <summary>
+        /// Calculates delta value for quadratic equation.
+        /// </summary>
         private void CalcDelta()
         {
             delta = (float)Math.Sqrt(b * b - 4 * a * c);
         }
 
         /// <summary>
-        /// Returns smaller positive x value
-        /// If value doesn't exist, returns -1.0f;
+        /// Returns smaller positive solution for quadratic solution. If such value doesn't exist, returns -1.0f;
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Smaller positive solution for quadratic solution or -1.0f.</returns>
         public float CalcSmallerPositiveX()
         {
             CalcDelta();
@@ -53,5 +65,6 @@ namespace CollisionLibrary
             }
             else return -1.0f;
         }
+        #endregion operations
     }
 }

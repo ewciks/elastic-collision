@@ -158,10 +158,10 @@ namespace CollisionLibraryTestProject
         }
 
         /// <summary>
-        ///A test for MoveBallsToCollisionTime
+        ///A test for MoveBallsToTime
         ///</summary>
         [TestMethod()]
-        public void MoveBallsToCollisionTimeTest()
+        public void MoveBallsToTimeTestCheckIfNextCollisionsIsUpdated()
         {
             List<Ball2> balls = new List<Ball2>();
             balls.Add(new Ball2(new Vector2(-1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f));
@@ -169,25 +169,7 @@ namespace CollisionLibraryTestProject
             Collision target = new Collision(balls, new List<Wall2>());
             target.NextCollisions = new List<NextCollision>();
             target.NextCollisions.Add(new NextCollision(2.0f, balls[0], balls[1]));
-            target.MoveBallsToCollisionTime();
-            Vector2 actual = target.Balls[0].Coordinates;
-            Vector2 expected = new Vector2(-1.0f, 9.0f);
-            Assert.AreEqual(actual, expected);
-        }
-
-        /// <summary>
-        ///A test for MoveBallsToCollisionTime
-        ///</summary>
-        [TestMethod()]
-        public void MoveBallsToCollisionTimeTestCheckIfNextCollisionsIsUpdated()
-        {
-            List<Ball2> balls = new List<Ball2>();
-            balls.Add(new Ball2(new Vector2(-1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(1.5f, 6.0f), new Vector2(1.0f, -3.0f), 0.01f, 0.01f));
-            Collision target = new Collision(balls, new List<Wall2>());
-            target.NextCollisions = new List<NextCollision>();
-            target.NextCollisions.Add(new NextCollision(2.0f, balls[0], balls[1]));
-            target.MoveBallsToCollisionTime();
+            target.MoveBallsToTime(target.NextCollisions[0].Time);
             Vector2 actual = target.Balls[0].Coordinates;
             Vector2 expected = new Vector2(-1.0f, 9.0f);
             Assert.AreEqual(actual, expected);

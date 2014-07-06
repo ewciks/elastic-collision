@@ -5,6 +5,9 @@
 	</TreeState>
 	<TreeState name="DiagramNavigator" viewX="0" viewY="0">
 		<ExpandedPath>DiagramNavigator</ExpandedPath>
+		<ExpandedPath>DiagramNavigator,UML Diagrams</ExpandedPath>
+		<ExpandedPath>UseCaseDiagram</ExpandedPath>
+		<SelectedPath>UseCaseDiagram,CYP2l2KGAqACZA.V</SelectedPath>
 	</TreeState>
 	<TreeState name="ClassBrowser" viewX="0" viewY="0">
 		<ExpandedPath>ClassBrowser</ExpandedPath>

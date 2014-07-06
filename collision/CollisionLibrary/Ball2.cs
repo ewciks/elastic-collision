@@ -12,17 +12,29 @@ using Microsoft.Xna.Framework.Media;
 namespace CollisionLibrary
 {
     /// <summary>
-    /// Ball2 class - objects participating in the collision
-    /// Two dimensions.
+    /// Two dimensional ball with id, mass, coordinates, velocity and radius
     /// </summary>
     public class Ball2 : CollisionObject
     {
         #region fields
-        public Vector2 V { get; set; }              // velocity
-        public float R { get; set; }                // radius
-        #endregion
+        /// <summary>
+        /// Two dimensional vector of velocities in [m/s].
+        /// </summary>
+        public Vector2 V { get; set; }
+        /// <summary>
+        /// Unnegative radius in [m].
+        /// </summary>
+        public float R { get; set; }
+        #endregion fields
 
         #region constructors
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="vel">Two dimensional vector of velocities in [m/s].</param>
+        /// <param name="coord">Two dimensional vector of coordinates in [m].</param>
+        /// <param name="mass">Unnegative mass in [kg].</param>
+        /// <param name="rad">Unnegative radius in [m].</param>
         public Ball2(Vector2 vel, Vector2 coord, float mass, float rad)
         {
             this.V = vel;
@@ -34,7 +46,7 @@ namespace CollisionLibrary
         }
 
         /// <summary>
-        /// Default constructor with 'zero' values
+        /// Default constructor with 'zero' values.
         /// </summary>
         public Ball2() : this(Vector2.Zero, Vector2.Zero, 0.0f, 0.0f) { }
         
@@ -43,7 +55,18 @@ namespace CollisionLibrary
         /// </summary>
         /// <param name="coord"></param>
         public Ball2(Vector2 coord) : this(Vector2.Zero, coord, 0.0f, 0.0f) { }
-        #endregion
+        #endregion constructors
+
+        #region move
+        /// <summary>
+        /// Move ball with it's velocity in uniform recrtilinear motion for time t.
+        /// </summary>
+        /// <param name="t">Time in seconds, must be bigger then zero.</param>
+        public void MoveBallUniformRectilinearMotion(float t)
+        {
+            if(t > 0) this.Coordinates += this.V * t;
+        }
+        #endregion move
 
         #region overrides
         public override string ToString()
@@ -88,6 +111,6 @@ namespace CollisionLibrary
         {
             return (int)(V.X * V.Y * Coordinates.X * Coordinates.Y * M * R);
         }
-        #endregion
+        #endregion overrides
     }
 }

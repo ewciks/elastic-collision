@@ -4,3 +4,6 @@ C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\obj\
 C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\obj\x86\Debug\collision.exe
 C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\obj\x86\Debug\collision.pdb
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\red_circle_100px.xnb
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\CollisionLibrary.dll
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\CollisionLibrary.pdb

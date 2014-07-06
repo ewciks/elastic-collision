@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using CollisionLibrary;
 
 namespace collision
 {
@@ -18,6 +19,15 @@ namespace collision
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Collision collision;
+        //float timer = 0.1f;
+        //const float TIMER = 0.1f;
+        const float METER_FACTOR = 2000.0f; // 1m = 2000 px, to have value in [m] you have to multiply it by METER
+        Texture2D ballsSpriteTexture;
+        Texture2D wallsSpriteTexture;
+        bool flag = false;
+        float collisionTimer = 1000.0f;
+        const float R_SCALE = 10000.0f;
 
         public Game1()
         {
@@ -34,6 +44,17 @@ namespace collision
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            List<Ball2> balls = new List<Ball2>();
+            balls.Add(new Ball2(new Vector2(0, 0.1f), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));  // vertical test
+            balls.Add(new Ball2(new Vector2(0.1f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));  // horizontal test
+            balls.Add(new Ball2(new Vector2(0.1f, 0.2f), new Vector2(0.1f, 0.01f), 0.01f, 0.00001f));  // inclined test
+            List<Wall2> walls = new List<Wall2>();
+            walls.Add(new Wall2(new Vector2(0, 0), WallOrientation.Left));
+            walls.Add(new Wall2(new Vector2(GraphicsDevice.Viewport.Bounds.Width / METER_FACTOR, 0), WallOrientation.Right));
+            walls.Add(new Wall2(new Vector2(0, 0), WallOrientation.Top));
+            walls.Add(new Wall2(new Vector2(0, GraphicsDevice.Viewport.Bounds.Height / METER_FACTOR), WallOrientation.Bottom));
+
+            collision = new Collision(balls, walls);
 
             base.Initialize();
         }
@@ -41,13 +62,15 @@ namespace collision
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
-        /// </summary>
+        /// </summary>cre
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            ballsSpriteTexture = this.Content.Load<Texture2D>("red_circle_100px");
+            wallsSpriteTexture = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
         }
 
         /// <summary>
@@ -71,6 +94,22 @@ namespace collision
                 this.Exit();
 
             // TODO: Add your update logic here
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            if (flag == false)
+            {
+                collision.GetNextBallWallCollision();
+                collisionTimer = collision.NextCollisions[0].Time;
+                flag = true;
+            }
+            collisionTimer -= elapsed;
+            if (collisionTimer <= 0)
+            {
+                collision.CalcPostImpactVBallWall(collision.NextCollisions[0]);
+                flag = false;
+            }
+
+            collision.MoveBallsToTime(elapsed);
 
             base.Update(gameTime);
         }
@@ -84,6 +123,14 @@ namespace collision
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+            foreach (Ball2 b in collision.Balls)
+            {
+                spriteBatch.Draw(ballsSpriteTexture, (b.Coordinates + new Vector2(b.R, b.R)) * METER_FACTOR, null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
+            }
+            spriteBatch.End();
+
+
 
             base.Draw(gameTime);
         }

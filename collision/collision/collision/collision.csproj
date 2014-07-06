@@ -116,6 +116,10 @@
     <Content Include="GameThumbnail.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CollisionLibrary\CollisionLibrary.csproj">
+      <Project>{49A5D0BB-2CE2-4627-9A60-E553C69FB68A}</Project>
+      <Name>CollisionLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\collisionContent\collisionContent.contentproj">
       <Name>collisionContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>

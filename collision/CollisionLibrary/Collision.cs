@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 namespace CollisionLibrary
 {
     /// <summary>
-    /// Collision engine
+    /// Collision physics engine.
     /// </summary>
     public class Collision
     {
@@ -53,7 +53,7 @@ namespace CollisionLibrary
                 s = Math.Abs(b.Coordinates.X - w.Coordinates.X);
             }
 
-            return (s - b.R) / directionBallV;
+            return (s - b.R) / Math.Abs(directionBallV);
         }
 
         public void GetNextBallWallCollision()
@@ -164,26 +164,15 @@ namespace CollisionLibrary
         #endregion collision detection
 
         #region collision calculations
-        public void MoveBallsToCollisionTime()
+        /// <summary>
+        /// Move each ball to time [s] (uniform rectlinear motion)
+        /// </summary>
+        /// <param name="t"></param>
+        public void MoveBallsToTime(float t)
         {
-            if(NextCollisions != null && NextCollisions.Count > 0) 
+            foreach (Ball2 b in Balls)
             {
-                float colTime = NextCollisions[0].Time;
-                foreach (Ball2 b in Balls)
-                {
-                    b.Coordinates += b.V * colTime;
-                    foreach (NextCollision nc in NextCollisions)
-                    {
-                        if (nc.Obj1.Id == b.Id)
-                        {
-                            nc.Obj1.Coordinates = b.Coordinates;
-                        }
-                        else if (nc.Obj2.Id == b.Id)    // for ball-ball collisions
-                        {
-                            nc.Obj2.Coordinates = b.Coordinates;
-                        }
-                    }
-                }
+                b.MoveBallUniformRectilinearMotion(t);
             }
         }
 
