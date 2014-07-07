@@ -15,8 +15,8 @@ namespace CollisionLibrary
         public List<NextCollision> NextCollisions { get; set; }
         public List<Ball2> Balls { get; set; }
         public List<Wall2> Walls { get; set; }
-
         private const float MAXTIME = 1000000.0f;
+        private const float PRECISION = 1.0f / 60.0f;
         #endregion
 
         #region constructors
@@ -137,26 +137,33 @@ namespace CollisionLibrary
             {
                 for (int j = i + 1; j < Balls.Count; j++)
                 {
-                    float xdiff = Balls[i].Coordinates.X - Balls[j].Coordinates.X;
-                    float ydiff = Balls[i].Coordinates.Y - Balls[j].Coordinates.Y;
-                    float vxdiff = Balls[i].V.X - Balls[j].V.X;
-                    float vydiff = Balls[i].V.Y - Balls[j].V.Y;
-                    float a = vxdiff * vxdiff + vydiff * vydiff;
-                    float b = 2 * xdiff * vxdiff + 2 * ydiff * vydiff;
-                    float c = xdiff * xdiff + ydiff * ydiff - (float)Math.Pow(Balls[i].R + Balls[j].R, 2);
+                    float xdiff = Balls[j].Coordinates.X - Balls[i].Coordinates.X;
+                    float ydiff = Balls[j].Coordinates.Y - Balls[i].Coordinates.Y;
+                    float vxdiff = Balls[j].V.X - Balls[i].V.X;
+                    float vydiff = Balls[j].V.Y - Balls[i].V.Y;
+                    float xdiff2 = xdiff * xdiff;
+                    float ydiff2 = ydiff * ydiff;
+                    float vxdiff2 = vxdiff * vxdiff;
+                    float vydiff2 = vydiff * vydiff;
+                    float r_sum = Balls[i].R + Balls[j].R;
+                    float r_sum2 = r_sum * r_sum;
+                    float a = vxdiff2 + vydiff2;
+                    float b = 2.0f * xdiff * vxdiff + 2.0f * ydiff * vydiff;
+                    float c = xdiff2 + ydiff2 - r_sum2;     
                     QuadraticEquation qe = new QuadraticEquation(a, b, c);
                     float time = qe.CalcSmallerPositiveX();
-                    if (time >= 0 && time < nc.Time)
+                    if (time >= 0.0f && (time + PRECISION) < nc.Time)   
                     {
                         nc = new NextCollision(time, Balls[i], Balls[j]);
                         this.NextCollisions = new List<NextCollision>();
                         this.NextCollisions.Add(nc);
                     }
-                    else if (time == nc.Time)
+                    else if (time >= 0.0f && (time - PRECISION) <= nc.Time)
                     {
                         nc = new NextCollision(time, Balls[i], Balls[j]);
                         this.NextCollisions.Add(nc);
                     }
+
                 }
             }
 
@@ -253,5 +260,17 @@ namespace CollisionLibrary
         }
         #endregion collision calculations
 
+        #region others
+        public float CalcTotalKineticEnergy()
+        {
+            float total_kin_energy = 0.0f;
+            foreach (Ball2 b in Balls)
+            {
+                float v_2 = b.V.X * b.V.X + b.V.Y * b.V.Y;
+                total_kin_energy += 0.5f * b.M * v_2;
+            }
+            return total_kin_energy;
+        }
+        #endregion
     }
 }

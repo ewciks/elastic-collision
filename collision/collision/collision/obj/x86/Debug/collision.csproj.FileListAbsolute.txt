@@ -9,3 +9,4 @@ C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\
 C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\CollisionLibrary.pdb
 C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\counter.xnb
 C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\black_circle_100px.xnb
+C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\yellow_circle_100px.xnb

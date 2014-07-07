@@ -45,9 +45,9 @@ namespace CollisionLibrary
         /// </summary>
         private void CalcDelta()
         {
-            float val = b * b - 4 * a * c;
-            if (val * 7.0f < 0.0f) val = 0.0f;
-            delta = (float)Math.Sqrt(val);
+            float val = b * b - 4.0f * a * c;
+            if (val >= 0.0f) delta = (float)Math.Sqrt(val);
+            else delta = -0.1f;
         }
 
         /// <summary>
@@ -59,8 +59,8 @@ namespace CollisionLibrary
             CalcDelta();
             if (delta >= 0.0f)
             {
-                x1 = (-b - delta) / (2 * a);
-                x2 = (-b + delta) / (2 * a);
+                x1 = (-b - delta) / (2.0f * a);
+                x2 = (-b + delta) / (2.0f * a);
                 if (x1 >= 0.0f && x1 <= x2) return x1;
                 else if (x2 >= 0.0f && x2 <= x1) return x2;
                 else return -1.0f;
