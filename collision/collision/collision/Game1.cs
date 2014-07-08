@@ -20,11 +20,11 @@ namespace collision
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Collision collision;
-        const float METER_FACTOR = 2000.0f; // 1m = 2000 px, to have value in [m] you have to multiply it by METER
+        const float METER_TO_PIXEL_FACTOR = 2000.0f; // 1m = 2000 px, to have value in [m] you have to multiply it by METER_TO_PIXEL_FACTOR
         Texture2D ballsSpriteTextureRed, ballsSpriteTextureBlack, ballsSpriteTextureYellow;
         bool isNextCollisionTimeKnown = false;
         float collisionTimer = 1000.0f;
-        const float R_SCALE = 1000.0f;
+        const float R_SCALE = 40.0f;    // for 100x100 px ball picture to have 1x1m picutre you have to multiply it by R_SCALE
         Texture2D options;
         Vector2 optionsPos;
         Vector2 optionsSize;
@@ -51,35 +51,36 @@ namespace collision
             // TODO: Add your initialization logic here
             List<Ball2> balls = new List<Ball2>();
             // ball-wall and ball-ball test
-            balls.Add(new Ball2(new Vector2(0, 0.1f), new Vector2(0.1f, 0.01f), 0.01f, 0.0001f));  // ball-wall vertical test
-            balls.Add(new Ball2(new Vector2(0.1f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.0001f));  // ball-wall horizontal test
-            balls.Add(new Ball2(new Vector2(0.1f, 0.2f), new Vector2(0.1f, 0.01f), 0.01f, 0.0001f));  // ball-wall inclined test
+            /*
+            balls.Add(new Ball2(new Vector2(0, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));  // ball-wall vertical test
+            balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));  // ball-wall horizontal test
+            balls.Add(new Ball2(new Vector2(0.05f, 0.01f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));  // ball-wall inclined test
             
             // ball-ball horizontal test
-            balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.0001f));
-            balls.Add(new Ball2(new Vector2(-0.1f, 0), new Vector2(0.4f, 0.01f), 0.01f, 0.0001f));
-            balls.Add(new Ball2(new Vector2(0.1f, 0), new Vector2(0.1f, 0.1f), 0.01f, 0.0001f));
-            balls.Add(new Ball2(new Vector2(-0.1f, 0), new Vector2(0.4f, 0.1f), 0.01f, 0.0001f));
+            balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(-0.1f, 0), new Vector2(0.4f, 0.01f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.1f, 0), new Vector2(0.1f, 0.1f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(-0.1f, 0), new Vector2(0.4f, 0.1f), 0.01f, 0.01f));
             
             // ball-ball vertical test
-            balls.Add(new Ball2(new Vector2(0.0f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.0001f));
-            balls.Add(new Ball2(new Vector2(0.0f, -0.1f), new Vector2(0.1f, 0.15f), 0.01f, 0.0001f)); 
+            balls.Add(new Ball2(new Vector2(0.0f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, -0.1f), new Vector2(0.1f, 0.15f), 0.01f, 0.01f)); 
             
             // ball-ball inclined test
-            balls.Add(new Ball2(new Vector2(0.05f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.0001f));
-            balls.Add(new Ball2(new Vector2(-0.1f, -0.1f), new Vector2(0.19f, 0.1f), 0.01f, 0.0001f));
-            
+            balls.Add(new Ball2(new Vector2(0.05f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(-0.1f, -0.1f), new Vector2(0.19f, 0.1f), 0.01f, 0.01f));
+            */
             // triple ball collision test
-            balls.Add(new Ball2(new Vector2(0.010f, 0.0f), new Vector2(0.0f, 0.15f), 0.01f, 0.0001f));
-            balls.Add(new Ball2(new Vector2(-0.010f, 0.0f), new Vector2(0.3f, 0.15f), 0.01f, 0.0001f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.010f), new Vector2(0.15f, 0.0f), 0.01f, 0.0001f));
+            balls.Add(new Ball2(new Vector2(0.10f, 0.0f), new Vector2(0.0f, 0.10f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(-0.10f, 0.0f), new Vector2(0.2f, 0.10f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.10f), new Vector2(0.10f, 0.0f), 0.01f, 0.01f));
            
 
             List<Wall2> walls = new List<Wall2>();
             walls.Add(new Wall2(new Vector2(0, 0), WallOrientation.Left));
-            walls.Add(new Wall2(new Vector2(GraphicsDevice.Viewport.Bounds.Width / METER_FACTOR, 0), WallOrientation.Right));
+            walls.Add(new Wall2(new Vector2(GraphicsDevice.Viewport.Bounds.Width / METER_TO_PIXEL_FACTOR, 0), WallOrientation.Right));
             walls.Add(new Wall2(new Vector2(0, 0), WallOrientation.Top));
-            walls.Add(new Wall2(new Vector2(0, 0.7f * GraphicsDevice.Viewport.Bounds.Height / METER_FACTOR), WallOrientation.Bottom));
+            walls.Add(new Wall2(new Vector2(0, 0.8f * GraphicsDevice.Viewport.Bounds.Height / METER_TO_PIXEL_FACTOR), WallOrientation.Bottom));
 
             collision = new Collision(balls, walls);
             kin_energy = collision.CalcTotalKineticEnergy();
@@ -102,10 +103,10 @@ namespace collision
             ballsSpriteTextureYellow = this.Content.Load<Texture2D>("yellow_circle_100px");
             options = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             options.SetData<Color>(new Color[] { Color.White });
-            optionsPos = new Vector2(0, (int)(0.7 * GraphicsDevice.Viewport.Bounds.Height));
-            optionsSize = new Vector2(GraphicsDevice.Viewport.Bounds.Width, (int)(0.3 * GraphicsDevice.Viewport.Bounds.Height));
+            optionsPos = new Vector2(0, (int)(0.8 * GraphicsDevice.Viewport.Bounds.Height));
+            optionsSize = new Vector2(GraphicsDevice.Viewport.Bounds.Width, (int)(0.2 * GraphicsDevice.Viewport.Bounds.Height));
             font = this.Content.Load<SpriteFont>("counter");
-            fontPos = new Vector2(0, (int)(0.7 * GraphicsDevice.Viewport.Bounds.Height));
+            fontPos = new Vector2(0, (int)(0.8 * GraphicsDevice.Viewport.Bounds.Height));
         }
 
         /// <summary>
@@ -135,17 +136,26 @@ namespace collision
             {
                 collision.GetNextBallWallCollision();
                 collision.GetNextBallBallCollision();
-                collisionTimer = collision.NextCollisions[0].Time;
-                isNextCollisionTimeKnown = true;
-                // setting next collision string
-                nextCollision = "";
-                foreach(NextCollision nc in collision.NextCollisions)
+                if (collision.NextCollisions.Count > 0)
                 {
-                    nextCollision += " / " + nc.ToString();
+                    collisionTimer = collision.NextCollisions[0].Time;
+                    isNextCollisionTimeKnown = true;
+                    // setting next collision string
+                    nextCollision = "";
+                    foreach (NextCollision nc in collision.NextCollisions)
+                    {
+                        nextCollision += " / " + nc.ToString();
+                    }
                 }
+                else
+                {
+                    isNextCollisionTimeKnown = false;
+                    nextCollision = " / unknown";
+                }
+
             }
             collisionTimer -= elapsed;
-            if (collisionTimer <= 0)
+            if (isNextCollisionTimeKnown && collisionTimer <= 0)
             {
                 foreach (NextCollision nc in collision.NextCollisions)
                 {
@@ -163,7 +173,7 @@ namespace collision
                 isNextCollisionTimeKnown = false;
                 kin_energy = collision.CalcTotalKineticEnergy();
             }
-
+            
             collision.MoveBallsToTime(elapsed);
 
             base.Update(gameTime);
@@ -183,15 +193,15 @@ namespace collision
             {
                 if (b.Id % 2 == 0)
                 {
-                    spriteBatch.Draw(ballsSpriteTextureBlack, (b.Coordinates + new Vector2(b.R, b.R)) * METER_FACTOR, null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
+                    spriteBatch.Draw(ballsSpriteTextureBlack, (b.Coordinates * METER_TO_PIXEL_FACTOR + new Vector2(b.R * R_SCALE, b.R * R_SCALE)), null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
                 }
                 else if (b.Id % 3 == 0)
                 {
-                    spriteBatch.Draw(ballsSpriteTextureYellow, (b.Coordinates + new Vector2(b.R, b.R)) * METER_FACTOR, null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
+                    spriteBatch.Draw(ballsSpriteTextureYellow, (b.Coordinates * METER_TO_PIXEL_FACTOR + new Vector2(b.R * R_SCALE, b.R * R_SCALE)), null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
                 }
-                else
+                else if(b.Id == 1)
                 {
-                    spriteBatch.Draw(ballsSpriteTextureRed, (b.Coordinates + new Vector2(b.R, b.R)) * METER_FACTOR, null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
+                    spriteBatch.Draw(ballsSpriteTextureRed, (b.Coordinates * METER_TO_PIXEL_FACTOR + new Vector2(b.R * R_SCALE, b.R * R_SCALE)), null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
                 }
             }
             spriteBatch.Draw(options, new Rectangle((int)optionsPos.X, (int)optionsPos.Y, (int)optionsSize.X, (int)optionsSize.Y), Color.WhiteSmoke);

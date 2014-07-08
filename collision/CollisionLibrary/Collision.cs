@@ -16,7 +16,7 @@ namespace CollisionLibrary
         public List<Ball2> Balls { get; set; }
         public List<Wall2> Walls { get; set; }
         private const float MAXTIME = 1000000.0f;
-        private const float PRECISION = 1.0f / 60.0f;
+        private const float PRECISION = 1.0f / 60.0f;   // precision of time between each update is done
         #endregion
 
         #region constructors
@@ -67,13 +67,13 @@ namespace CollisionLibrary
                     if(Balls[i].V.X > 0 && Walls[j].Orientation == WallOrientation.Right) // ball move in right wall direction
                     {
                         float time = GetBallWallCollisionTime(Balls[i], Walls[j], Balls[i].V.X);
-                        if (time < nc.Time) 
+                        if (time >= 0.0f && (time + PRECISION) < nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions = new List<NextCollision>();
                             this.NextCollisions.Add(nc);
                         }
-                        else if (time == nc.Time)
+                        else if (time >= 0.0f && (time - PRECISION) <= nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions.Add(nc);
@@ -82,13 +82,13 @@ namespace CollisionLibrary
                     else if (Balls[i].V.X < 0 && Walls[j].Orientation == WallOrientation.Left) // ball move in left wall direction
                     {
                         float time = GetBallWallCollisionTime(Balls[i], Walls[j], Balls[i].V.X);
-                        if (time < nc.Time) 
+                        if (time >= 0.0f && (time + PRECISION) < nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions = new List<NextCollision>();
                             this.NextCollisions.Add(nc);
                         }
-                        else if (time == nc.Time)
+                        else if (time >= 0.0f && (time - PRECISION) <= nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions.Add(nc);
@@ -97,13 +97,13 @@ namespace CollisionLibrary
                     else if (Balls[i].V.Y > 0 && Walls[j].Orientation == WallOrientation.Bottom) // ball move in bottom wall direction
                     {
                         float time = GetBallWallCollisionTime(Balls[i], Walls[j], Balls[i].V.Y);
-                        if (time < nc.Time) 
+                        if (time >= 0.0f && (time + PRECISION) < nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions = new List<NextCollision>();
                             this.NextCollisions.Add(nc);
                         }
-                        else if (time == nc.Time)
+                        else if (time >= 0.0f && (time - PRECISION) <= nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions.Add(nc);
@@ -112,13 +112,13 @@ namespace CollisionLibrary
                     else if (Balls[i].V.Y < 0 && Walls[j].Orientation == WallOrientation.Top) // ball move in top wall direction
                     {
                         float time = GetBallWallCollisionTime(Balls[i], Walls[j], Balls[i].V.Y);
-                        if (time < nc.Time) 
+                        if (time >= 0.0f && (time + PRECISION) < nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions = new List<NextCollision>();
                             this.NextCollisions.Add(nc);
                         }
-                        else if (time == nc.Time)
+                        else if (time >= 0.0f && (time - PRECISION) <= nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions.Add(nc);
@@ -132,7 +132,10 @@ namespace CollisionLibrary
 
         public void GetNextBallBallCollision()
         {
-            NextCollision nc = new NextCollision(NextCollisions[0].Time, new CollisionObject(), new CollisionObject());
+            float curr_time;
+            if (NextCollisions.Count > 0) curr_time = NextCollisions[0].Time;
+            else curr_time = MAXTIME;
+            NextCollision nc = new NextCollision(curr_time, new CollisionObject(), new CollisionObject());
             for (int i = 0; i < Balls.Count; i++)
             {
                 for (int j = i + 1; j < Balls.Count; j++)
@@ -163,7 +166,6 @@ namespace CollisionLibrary
                         nc = new NextCollision(time, Balls[i], Balls[j]);
                         this.NextCollisions.Add(nc);
                     }
-
                 }
             }
 
