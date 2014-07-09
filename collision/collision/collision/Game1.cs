@@ -55,13 +55,13 @@ namespace collision
             balls.Add(new Ball2(new Vector2(0, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));  // ball-wall vertical test
             balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));  // ball-wall horizontal test
             balls.Add(new Ball2(new Vector2(0.05f, 0.01f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));  // ball-wall inclined test
-            
+            */
             // ball-ball horizontal test
             balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(-0.1f, 0), new Vector2(0.4f, 0.01f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0), new Vector2(0.2f, 0.01f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(0.1f, 0), new Vector2(0.1f, 0.1f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(-0.1f, 0), new Vector2(0.4f, 0.1f), 0.01f, 0.01f));
-            
+           /* 
             // ball-ball vertical test
             balls.Add(new Ball2(new Vector2(0.0f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(0.0f, -0.1f), new Vector2(0.1f, 0.15f), 0.01f, 0.01f)); 
@@ -69,18 +69,18 @@ namespace collision
             // ball-ball inclined test
             balls.Add(new Ball2(new Vector2(0.05f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(-0.1f, -0.1f), new Vector2(0.19f, 0.1f), 0.01f, 0.01f));
-            */
+            
             // triple ball collision test
             balls.Add(new Ball2(new Vector2(0.10f, 0.0f), new Vector2(0.0f, 0.10f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(-0.10f, 0.0f), new Vector2(0.2f, 0.10f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(0.0f, 0.10f), new Vector2(0.10f, 0.0f), 0.01f, 0.01f));
-           
+           */
 
             List<Wall2> walls = new List<Wall2>();
-            walls.Add(new Wall2(new Vector2(0, 0), WallOrientation.Left));
-            walls.Add(new Wall2(new Vector2(GraphicsDevice.Viewport.Bounds.Width / METER_TO_PIXEL_FACTOR, 0), WallOrientation.Right));
-            walls.Add(new Wall2(new Vector2(0, 0), WallOrientation.Top));
-            walls.Add(new Wall2(new Vector2(0, 0.8f * GraphicsDevice.Viewport.Bounds.Height / METER_TO_PIXEL_FACTOR), WallOrientation.Bottom));
+            walls.Add(new Wall2(new Vector2(0.0f, 0.0f), WallOrientation.Left));
+            walls.Add(new Wall2(new Vector2(GraphicsDevice.Viewport.Bounds.Width / METER_TO_PIXEL_FACTOR, 0.0f), WallOrientation.Right));
+            walls.Add(new Wall2(new Vector2(0.0f, 0.0f), WallOrientation.Top));
+            walls.Add(new Wall2(new Vector2(0.0f, 0.8f * GraphicsDevice.Viewport.Bounds.Height / METER_TO_PIXEL_FACTOR), WallOrientation.Bottom));
 
             collision = new Collision(balls, walls);
             kin_energy = collision.CalcTotalKineticEnergy();
@@ -191,17 +191,20 @@ namespace collision
             spriteBatch.Begin();
             foreach (Ball2 b in collision.Balls)
             {
+                Vector2 position = b.Coordinates * METER_TO_PIXEL_FACTOR;
+                Vector2 origin = new Vector2(2.0f * b.R * METER_TO_PIXEL_FACTOR, 2.0f * b.R * METER_TO_PIXEL_FACTOR);
+                float scale = R_SCALE * b.R;
                 if (b.Id % 2 == 0)
                 {
-                    spriteBatch.Draw(ballsSpriteTextureBlack, (b.Coordinates * METER_TO_PIXEL_FACTOR + new Vector2(b.R * R_SCALE, b.R * R_SCALE)), null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
+                    spriteBatch.Draw(ballsSpriteTextureBlack, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
                 }
                 else if (b.Id % 3 == 0)
                 {
-                    spriteBatch.Draw(ballsSpriteTextureYellow, (b.Coordinates * METER_TO_PIXEL_FACTOR + new Vector2(b.R * R_SCALE, b.R * R_SCALE)), null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
+                    spriteBatch.Draw(ballsSpriteTextureYellow, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
                 }
                 else if(b.Id == 1)
                 {
-                    spriteBatch.Draw(ballsSpriteTextureRed, (b.Coordinates * METER_TO_PIXEL_FACTOR + new Vector2(b.R * R_SCALE, b.R * R_SCALE)), null, Color.White, 0.0f, Vector2.Zero, R_SCALE * b.R, SpriteEffects.None, 0);
+                    spriteBatch.Draw(ballsSpriteTextureRed, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
                 }
             }
             spriteBatch.Draw(options, new Rectangle((int)optionsPos.X, (int)optionsPos.Y, (int)optionsSize.X, (int)optionsSize.Y), Color.WhiteSmoke);
