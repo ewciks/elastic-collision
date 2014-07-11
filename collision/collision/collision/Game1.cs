@@ -19,31 +19,81 @@ namespace collision
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        KeyboardState oldState;
+
         Collision collision;
-        const float METER_TO_PIXEL_FACTOR = 2000.0f; // 1m = 2000 px, to have value in [m] you have to multiply it by METER_TO_PIXEL_FACTOR
+        bool isNextCollisionTimeKnown;
+        float collisionTimer;
+
+        // printing balls
         Texture2D ballsSpriteTextureRed, ballsSpriteTextureBlack, ballsSpriteTextureYellow;
-        bool isNextCollisionTimeKnown = false;
-        float collisionTimer = 1000.0f;
+        const float METER_TO_PIXEL_FACTOR = 2000.0f; // 1m = 2000 px, to have value in [m] you have to multiply it by METER_TO_PIXEL_FACTOR
         const float R_SCALE = 40.0f;    // for 100x100 px ball picture to have 1x1m picutre you have to multiply it by R_SCALE
+        int ballsStartingPositionOption = 0;
+        const int BALLS_STARTING_POSITIONS = 5;
+
+        // printing bottom panel with data
         Texture2D options;
         Vector2 optionsPos;
         Vector2 optionsSize;
-        int counter = 0;
-        float kin_energy = 0.0f;
+        int counter;
+        float kin_energy;
         SpriteFont font;
         Vector2 fontPos;
         string nextCollision;
-        bool isRunning = false;
-        KeyboardState oldState;
-        int selectedBallId = 1;
+        int selectedBallId;
+        int selectedBall;
+
+        // pause printing
+        bool isRunning;
+        Texture2D pause;
+        Vector2 pausePos;
+        Vector2 pauseSize;
+        Vector2 pauseStringPos;
+        const string pauseString = "PAUSE (press: )\n space - resume\n tab - switch balls\n key down - switch ball starting positions";
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            this.Window.Title = "Perfect elastic collisions 2D";
+            this.IsMouseVisible = true;
         }
 
-        public void CalcAndSetNextCol()
+        private void UpdateKeyboardInput()
+        {
+            KeyboardState newState = Keyboard.GetState();
+            // Is the SPACE key down?
+            if (newState.IsKeyDown(Keys.Space))
+            {
+                // If not down last update, key has just been pressed.
+                if (!oldState.IsKeyDown(Keys.Space))
+                {
+                    if (isRunning) isRunning = false;
+                    else isRunning = true;
+                }
+            }
+            else if (newState.IsKeyDown(Keys.Tab))
+            {
+                if (!oldState.IsKeyDown(Keys.Tab))
+                {
+                    selectedBall = (selectedBall + 1) % collision.Balls.Count;
+                    selectedBallId = collision.Balls[selectedBall].Id;
+                }
+            }
+            else if (newState.IsKeyDown(Keys.Down))
+            {
+                if (!oldState.IsKeyDown(Keys.Down))
+                {
+                    ballsStartingPositionOption = (ballsStartingPositionOption + 1) % BALLS_STARTING_POSITIONS;
+                    StartNewSimulation();
+                }
+            }
+            // Update saved state.
+            oldState = newState;
+        }
+
+        private void CalcAndSetNextCol()
         {
             collision.GetNextBallWallCollision();
             collision.GetNextBallBallCollision();
@@ -65,6 +115,106 @@ namespace collision
             }
         }
 
+        #region balls starting positions
+        private void BallBallHorizontalTest(List<Ball2> balls)
+        {
+            balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0), new Vector2(0.2f, 0.01f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.1f, 0), new Vector2(0.1f, 0.1f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(-0.1f, 0), new Vector2(0.35f, 0.1f), 0.01f, 0.01f));
+        }
+
+        private void BallBallVerticalTest(List<Ball2> balls)
+        {
+            balls.Add(new Ball2(new Vector2(0.0f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, -0.1f), new Vector2(0.1f, 0.15f), 0.01f, 0.01f)); 
+        }
+
+        private void BallBallInclinedTest(List<Ball2> balls)
+        {
+            balls.Add(new Ball2(new Vector2(0.05f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(-0.1f, -0.1f), new Vector2(0.19f, 0.1f), 0.01f, 0.01f));
+        }
+
+        private void BallBallTripleColTest(List<Ball2> balls)
+        {
+            balls.Add(new Ball2(new Vector2(0.1f, 0.0f), new Vector2(0.01f, 0.11f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(-0.1f, 0.0f), new Vector2(0.21f, 0.11f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.1f), new Vector2(0.11f, 0.01f), 0.01f, 0.01f));
+        }
+
+        private void BillardStartTest(List<Ball2> balls)
+        {
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.04f, 0.08f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.04f, 0.1f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.04f, 0.12f), 0.01f, 0.01f));
+
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.06f, 0.09f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.06f, 0.11f), 0.01f, 0.01f));
+
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.06f + 0.02f, 0.10f), 0.01f, 0.01f));
+
+            balls.Add(new Ball2(new Vector2(-0.05f, 0.0f), new Vector2(0.3f, 0.10f), 0.01f, 0.01f));
+        }
+
+        private List<Ball2> AddBalls(int option)
+        {
+            List<Ball2> balls = new List<Ball2>();
+            switch (option)
+            {
+                case 0:
+                    BallBallHorizontalTest(balls);
+                    break;
+                case 1:
+                    BallBallVerticalTest(balls);
+                    break;
+                case 2:
+                    BallBallInclinedTest(balls);
+                    break;
+                case 3:
+                    BallBallTripleColTest(balls);
+                    break;
+                case 4:
+                    BillardStartTest(balls);
+                    break;
+                default:
+                    BillardStartTest(balls);
+                    break;
+            }
+            return balls;
+        }
+        #endregion balls starting positions
+
+        #region walls starting positions
+        private List<Wall2> AddWallsAsRectangle()
+        {
+            List<Wall2> walls = new List<Wall2>();
+            walls.Add(new Wall2(new Vector2(0.0f, 0.0f), WallOrientation.Left));
+            walls.Add(new Wall2(new Vector2(GraphicsDevice.Viewport.Bounds.Width / METER_TO_PIXEL_FACTOR, 0.0f), WallOrientation.Right));
+            walls.Add(new Wall2(new Vector2(0.0f, 0.0f), WallOrientation.Top));
+            walls.Add(new Wall2(new Vector2(0.0f, 0.8f * GraphicsDevice.Viewport.Bounds.Height / METER_TO_PIXEL_FACTOR), WallOrientation.Bottom));
+            return walls;
+        }
+        #endregion
+
+        private void StartNewSimulation()
+        {
+            isNextCollisionTimeKnown = false;
+            collisionTimer = 1000.0f;
+            counter = 0;
+            kin_energy = 0.0f;
+            isRunning = false;
+            selectedBall = 0;
+
+            List<Ball2> balls = AddBalls(ballsStartingPositionOption);
+            List<Wall2> walls = AddWallsAsRectangle();
+
+            collision = new Collision(balls, walls);
+            selectedBallId = collision.Balls[0].Id;
+            kin_energy = collision.CalcTotalKineticEnergy();
+            CalcAndSetNextCol();
+        }
+
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
         /// This is where it can query for any required services and load any non-graphic
@@ -74,57 +224,7 @@ namespace collision
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            List<Ball2> balls = new List<Ball2>();
-            // ball-wall and ball-ball test
-            /*
-            balls.Add(new Ball2(new Vector2(0, 0.05f), new Vector2(0.1f, 0.03f), 0.01f, 0.01f));  // ball-wall vertical test
-            balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));  // ball-wall horizontal test
-            balls.Add(new Ball2(new Vector2(0.05f, 0.01f), new Vector2(0.2f, 0.01f), 0.01f, 0.01f));  // ball-wall inclined test
-            
-            // ball-ball horizontal test
-            balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0), new Vector2(0.2f, 0.01f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.1f, 0), new Vector2(0.1f, 0.1f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(-0.1f, 0), new Vector2(0.4f, 0.1f), 0.01f, 0.01f));
-           
-            // ball-ball vertical test
-            balls.Add(new Ball2(new Vector2(0.0f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, -0.1f), new Vector2(0.1f, 0.15f), 0.01f, 0.01f)); 
-            
-            // ball-ball inclined test
-            balls.Add(new Ball2(new Vector2(0.05f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(-0.1f, -0.1f), new Vector2(0.19f, 0.1f), 0.01f, 0.01f));
-             
-            // triple ball collision test
-            balls.Add(new Ball2(new Vector2(0.1f, 0.0f), new Vector2(0.0f, 0.10f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(-0.1f, 0.0f), new Vector2(0.2f, 0.10f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.1f), new Vector2(0.10f, 0.0f), 0.01f, 0.01f));
-           */
-
-            
-            // billard start test
-            
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.04f, 0.08f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.04f, 0.1f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.04f, 0.12f), 0.01f, 0.01f));
-
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.06f, 0.09f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.06f, 0.11f), 0.01f, 0.01f));
-            
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.06f + 0.02f, 0.10f), 0.01f, 0.01f));
-
-            balls.Add(new Ball2(new Vector2(-0.05f, 0.0f), new Vector2(0.3f, 0.10f), 0.01f, 0.01f));
-            
-
-            List<Wall2> walls = new List<Wall2>();
-            walls.Add(new Wall2(new Vector2(0.0f, 0.0f), WallOrientation.Left));
-            walls.Add(new Wall2(new Vector2(GraphicsDevice.Viewport.Bounds.Width / METER_TO_PIXEL_FACTOR, 0.0f), WallOrientation.Right));
-            walls.Add(new Wall2(new Vector2(0.0f, 0.0f), WallOrientation.Top));
-            walls.Add(new Wall2(new Vector2(0.0f, 0.8f * GraphicsDevice.Viewport.Bounds.Height / METER_TO_PIXEL_FACTOR), WallOrientation.Bottom));
-
-            collision = new Collision(balls, walls);
-            kin_energy = collision.CalcTotalKineticEnergy();
-            CalcAndSetNextCol();
+            StartNewSimulation();
 
             base.Initialize();
         }
@@ -148,6 +248,11 @@ namespace collision
             optionsSize = new Vector2(GraphicsDevice.Viewport.Bounds.Width, (int)(0.2 * GraphicsDevice.Viewport.Bounds.Height));
             font = this.Content.Load<SpriteFont>("counter");
             fontPos = new Vector2(0, (int)(0.8 * GraphicsDevice.Viewport.Bounds.Height));
+            pause = new Texture2D(GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
+            pause.SetData<Color>(new Color[] { Color.White });
+            pausePos = new Vector2(0, (int)(0.35 * GraphicsDevice.Viewport.Bounds.Height));
+            pauseSize = new Vector2((int)GraphicsDevice.Viewport.Bounds.Width, 6 * font.LineSpacing);
+            pauseStringPos = new Vector2((int)GraphicsDevice.Viewport.Bounds.Width / 2, (int)(0.4 * GraphicsDevice.Viewport.Bounds.Height + 1.5 * font.LineSpacing)) - font.MeasureString(pauseString) / 2;
         }
 
         /// <summary>
@@ -159,32 +264,6 @@ namespace collision
             // TODO: Unload any non ContentManager content here
         }
 
-        private void UpdateInput()
-        {
-            KeyboardState newState = Keyboard.GetState();
-            // Is the SPACE key down?
-            if (newState.IsKeyDown(Keys.Space))
-            {
-                // If not down last update, key has just been pressed.
-                if (!oldState.IsKeyDown(Keys.Space))
-                {
-                    if (isRunning) isRunning = false;
-                    else isRunning = true;
-                }
-            }
-            else if (newState.IsKeyDown(Keys.Tab))
-            {
-                if (!oldState.IsKeyDown(Keys.Tab))
-                {
-                    selectedBallId = selectedBallId % collision.Balls.Count + 1;
-                }
-            }
-            // Update saved state.
-            oldState = newState;
-
-
-        }
-
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -192,7 +271,7 @@ namespace collision
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            UpdateInput();
+            UpdateKeyboardInput();
             if (isRunning)
             {
                 // TODO: Add your update logic here
@@ -201,7 +280,7 @@ namespace collision
                 collision.MoveBallsToTime(elapsed);
                 if (isNextCollisionTimeKnown && collisionTimer <= 0)
                 {
-                    //if (counter == 126)
+                    //if (counter == 127)
                     //{
                     //}
                     collision.MoveBallsToTime(collisionTimer);
@@ -281,7 +360,12 @@ namespace collision
             spriteBatch.DrawString(font, "Collisions number: " + counter.ToString(), fontPos, Color.Green);
             spriteBatch.DrawString(font, "Total kinetic energy: " + kin_energy.ToString() + "[J]", fontPos + new Vector2(0, font.LineSpacing), Color.Green);
             spriteBatch.DrawString(font, "Next collision:" + nextCollision, fontPos + new Vector2(0, 2 * font.LineSpacing), Color.Green);
-            spriteBatch.DrawString(font, "Selected ball: " + collision.Balls[selectedBallId - 1].ToString(), fontPos + new Vector2(0, 3 * font.LineSpacing), Color.Green);
+            if(collision.Balls.Count > 0) spriteBatch.DrawString(font, "Selected ball: " + collision.Balls.Find(b => b.Id == selectedBallId).ToString(), fontPos + new Vector2(0, 3 * font.LineSpacing), Color.Green);
+            if (!isRunning)
+            {
+                spriteBatch.Draw(pause, new Rectangle((int)pausePos.X, (int)pausePos.Y, (int)pauseSize.X, (int)pauseSize.Y), Color.Gray * 0.5f);
+                spriteBatch.DrawString(font, pauseString, pauseStringPos, Color.Black);
+            }
             spriteBatch.End();
 
             base.Draw(gameTime);
