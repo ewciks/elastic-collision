@@ -35,6 +35,7 @@ namespace collision
         string nextCollision;
         bool isRunning = false;
         KeyboardState oldState;
+        int selectedBallId = 1;
 
         public Game1()
         {
@@ -171,8 +172,17 @@ namespace collision
                     else isRunning = true;
                 }
             }
+            else if (newState.IsKeyDown(Keys.Tab))
+            {
+                if (!oldState.IsKeyDown(Keys.Tab))
+                {
+                    selectedBallId = selectedBallId % collision.Balls.Count + 1;
+                }
+            }
             // Update saved state.
             oldState = newState;
+
+
         }
 
         /// <summary>
@@ -227,28 +237,21 @@ namespace collision
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
+            // all balls black drawing
             foreach (Ball2 b in collision.Balls)
             {
                 Vector2 position = b.Coordinates * METER_TO_PIXEL_FACTOR;
                 Vector2 origin = new Vector2(2.0f * b.R * METER_TO_PIXEL_FACTOR, 2.0f * b.R * METER_TO_PIXEL_FACTOR);
                 float scale = R_SCALE * b.R;
                 spriteBatch.Draw(ballsSpriteTextureBlack, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
-                /*if (b.Id % 2 == 0)
-                {
-                    spriteBatch.Draw(ballsSpriteTextureBlack, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
-                }
-                else if (b.Id % 3 == 0)
+                if (b.Id == selectedBallId)
                 {
                     spriteBatch.Draw(ballsSpriteTextureYellow, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
                 }
-                else if(b.Id == 1)
-                {
-                    spriteBatch.Draw(ballsSpriteTextureRed, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
-                }*/
             }
+            // next collision marker - red
             foreach (NextCollision nc in collision.NextCollisions)
             {
-                // which collision
                 if (nc.Obj1.M < Wall2.WALL_MASS && nc.Obj2.M < Wall2.WALL_MASS)
                 {
                     Ball2 b1 = (Ball2)nc.Obj1;
@@ -263,10 +266,22 @@ namespace collision
                     spriteBatch.Draw(ballsSpriteTextureRed, position2, null, Color.White, 0.0f, origin2, scale2, SpriteEffects.None, 0);
                 }
             }
+            //selected ball - yellow
+            foreach (Ball2 b in collision.Balls)
+            {
+                if (b.Id == selectedBallId)
+                {
+                    Vector2 position = b.Coordinates * METER_TO_PIXEL_FACTOR;
+                    Vector2 origin = new Vector2(2.0f * b.R * METER_TO_PIXEL_FACTOR, 2.0f * b.R * METER_TO_PIXEL_FACTOR);
+                    float scale = R_SCALE * b.R;
+                    spriteBatch.Draw(ballsSpriteTextureYellow, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
+                }
+            }
             spriteBatch.Draw(options, new Rectangle((int)optionsPos.X, (int)optionsPos.Y, (int)optionsSize.X, (int)optionsSize.Y), Color.WhiteSmoke);
             spriteBatch.DrawString(font, "Collisions number: " + counter.ToString(), fontPos, Color.Green);
             spriteBatch.DrawString(font, "Total kinetic energy: " + kin_energy.ToString() + "[J]", fontPos + new Vector2(0, font.LineSpacing), Color.Green);
             spriteBatch.DrawString(font, "Next collision:" + nextCollision, fontPos + new Vector2(0, 2 * font.LineSpacing), Color.Green);
+            spriteBatch.DrawString(font, "Selected ball: " + collision.Balls[selectedBallId - 1].ToString(), fontPos + new Vector2(0, 3 * font.LineSpacing), Color.Green);
             spriteBatch.End();
 
             base.Draw(gameTime);
