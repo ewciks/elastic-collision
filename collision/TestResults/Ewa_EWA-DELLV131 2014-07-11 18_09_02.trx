@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="12ebe59a-1a47-44d7-804a-a96554dda340" name="Ewa@EWA-DELLV131 2014-07-11 18:09:02" runUser="Ewa-DellV131\Ewa" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c4f4939b-3f88-4cfc-b325-a068545cd073">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Ewa_EWA-DELLV131 2014-07-11 18_09_02">
+      <DeploymentItem filename="C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibrary\bin\x86\Debug\CollisionLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-07-11T18:09:02.0878428+02:00" queuing="2014-07-11T18:09:04.3819740+02:00" start="2014-07-11T18:09:04.4559783+02:00" finish="2014-07-11T18:10:09.9627250+02:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="EWA-DELLV131" outcome="Error" timestamp="2014-07-11T18:10:09.9607249+02:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetPrecisionTestLower" storage="c:\github\elastic_collision\elastic-collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="7121d330-8415-f24d-3c0f-b76ec9d6cd0b">
+      <Execution id="7146bf85-8741-447b-a1bf-0d966d13326c" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.PrecisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetPrecisionTestLower" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="7121d330-8415-f24d-3c0f-b76ec9d6cd0b" executionId="7146bf85-8741-447b-a1bf-0d966d13326c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="7146bf85-8741-447b-a1bf-0d966d13326c" testId="7121d330-8415-f24d-3c0f-b76ec9d6cd0b" testName="GetPrecisionTestLower" computerName="EWA-DELLV131" duration="00:01:05.4277422" startTime="2014-07-11T18:09:04.5349828+02:00" endTime="2014-07-11T18:10:09.9627250+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7146bf85-8741-447b-a1bf-0d966d13326c">
+    </UnitTestResult>
+  </Results>
+</TestRun>

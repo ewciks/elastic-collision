@@ -16,7 +16,7 @@ namespace CollisionLibrary
         public List<Ball2> Balls { get; set; }
         public List<Wall2> Walls { get; set; }
         private const float MAXTIME = 1000000.0f;
-        private const float PRECISION = 1.0f / 60.0f;   // precision of time between each update is done
+        private const float TIME_TO_NEXT_COLLISION = 1.0f / 60.0f;   // precision of time between each update is done
         #endregion
 
         #region constructors
@@ -67,13 +67,13 @@ namespace CollisionLibrary
                     if(Balls[i].V.X > 0 && Walls[j].Orientation == WallOrientation.Right) // ball move in right wall direction
                     {
                         float time = GetBallWallCollisionTime(Balls[i], Walls[j], Balls[i].V.X);
-                        if (time >= 0.0f && (time + PRECISION) < nc.Time)
+                        if (time >= 0.0f && (time + TIME_TO_NEXT_COLLISION) < nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions = new List<NextCollision>();
                             this.NextCollisions.Add(nc);
                         }
-                        else if (time >= 0.0f && (time - PRECISION) <= nc.Time)
+                        else if (time >= 0.0f && (time - TIME_TO_NEXT_COLLISION) <= nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions.Add(nc);
@@ -82,13 +82,13 @@ namespace CollisionLibrary
                     else if (Balls[i].V.X < 0 && Walls[j].Orientation == WallOrientation.Left) // ball move in left wall direction
                     {
                         float time = GetBallWallCollisionTime(Balls[i], Walls[j], Balls[i].V.X);
-                        if (time >= 0.0f && (time + PRECISION) < nc.Time)
+                        if (time >= 0.0f && (time + TIME_TO_NEXT_COLLISION) < nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions = new List<NextCollision>();
                             this.NextCollisions.Add(nc);
                         }
-                        else if (time >= 0.0f && (time - PRECISION) <= nc.Time)
+                        else if (time >= 0.0f && (time - TIME_TO_NEXT_COLLISION) <= nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions.Add(nc);
@@ -97,13 +97,13 @@ namespace CollisionLibrary
                     else if (Balls[i].V.Y > 0 && Walls[j].Orientation == WallOrientation.Bottom) // ball move in bottom wall direction
                     {
                         float time = GetBallWallCollisionTime(Balls[i], Walls[j], Balls[i].V.Y);
-                        if (time >= 0.0f && (time + PRECISION) < nc.Time)
+                        if (time >= 0.0f && (time + TIME_TO_NEXT_COLLISION) < nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions = new List<NextCollision>();
                             this.NextCollisions.Add(nc);
                         }
-                        else if (time >= 0.0f && (time - PRECISION) <= nc.Time)
+                        else if (time >= 0.0f && (time - TIME_TO_NEXT_COLLISION) <= nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions.Add(nc);
@@ -112,13 +112,13 @@ namespace CollisionLibrary
                     else if (Balls[i].V.Y < 0 && Walls[j].Orientation == WallOrientation.Top) // ball move in top wall direction
                     {
                         float time = GetBallWallCollisionTime(Balls[i], Walls[j], Balls[i].V.Y);
-                        if (time >= 0.0f && (time + PRECISION) < nc.Time)
+                        if (time >= 0.0f && (time + TIME_TO_NEXT_COLLISION) < nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions = new List<NextCollision>();
                             this.NextCollisions.Add(nc);
                         }
-                        else if (time >= 0.0f && (time - PRECISION) <= nc.Time)
+                        else if (time >= 0.0f && (time - TIME_TO_NEXT_COLLISION) <= nc.Time)
                         {
                             nc = new NextCollision(time, Balls[i], Walls[j]);
                             this.NextCollisions.Add(nc);
@@ -155,13 +155,13 @@ namespace CollisionLibrary
                     float c = xdiff2 + ydiff2 - r_sum2;     
                     QuadraticEquation qe = new QuadraticEquation(a, b, c);
                     float time = qe.CalcSmallerPositiveX();
-                    if (time >= 0.0f && (time + PRECISION) < nc.Time)   
+                    if ((float)Math.Round((decimal)time,3) > 0.0f && (time + TIME_TO_NEXT_COLLISION) < nc.Time)   
                     {
                         nc = new NextCollision(time, Balls[i], Balls[j]);
                         this.NextCollisions = new List<NextCollision>();
                         this.NextCollisions.Add(nc);
                     }
-                    else if (time >= 0.0f && (time - PRECISION) <= nc.Time)
+                    else if ((float)Math.Round((decimal)time, 3) > 0.0f && (time - TIME_TO_NEXT_COLLISION) <= nc.Time)
                     {
                         nc = new NextCollision(time, Balls[i], Balls[j]);
                         this.NextCollisions.Add(nc);
@@ -252,8 +252,8 @@ namespace CollisionLibrary
                     float v1nPost = factor1 * v1n - factor2 * v1n + 2 * factor2 * v2n;
                     float v2nPost = -factor1 * v2n + factor2 * v2n + 2 * factor1 * v1n;
 
-                    b1.V = v1nPost * normal + v1t * tangent;
-                    b2.V = v2nPost * normal + v2t * tangent;
+                    b1.V = new Vector2(v1nPost * normal.X + v1t * tangent.X, v1nPost * normal.Y + v1t * tangent.Y);
+                    b2.V = new Vector2(v2nPost * normal.X + v2t * tangent.X, v2nPost * normal.Y + v2t * tangent.Y);
 
                     return new NextCollision(nc.Time, b1, b2);
                 }

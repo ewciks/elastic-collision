@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="d01437c6-b46b-438e-92ea-80871922ce7e" name="Ewa@EWA-DELLV131 2014-07-11 19:38:31" runUser="Ewa-DellV131\Ewa" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c4f4939b-3f88-4cfc-b325-a068545cd073">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment userDeploymentRoot="C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\TestResults" useDefaultDeploymentRoot="false" enabled="false" runDeploymentRoot="Ewa_EWA-DELLV131 2014-07-11 19_38_31">
+      <DeploymentItem filename="C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibrary\bin\x86\Debug\CollisionLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-07-11T19:38:31.1659365+02:00" queuing="2014-07-11T19:38:33.7650852+02:00" start="2014-07-11T19:38:33.8110878+02:00" finish="2014-07-11T19:39:38.1757693+02:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="EWA-DELLV131" outcome="Error" timestamp="2014-07-11T19:39:38.1747692+02:00">
+        <Text>Test host process exited unexpectedly.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="GetNextBallBallCollisionTestOneColl" storage="c:\github\elastic_collision\elastic-collision\elastic-collision\collision\collisionlibrarytestproject\bin\debug\collisionlibrarytestproject.dll" id="5706bc5c-9e11-4309-7da3-559b179a1156">
+      <Execution id="e8d2a065-bf83-4f7e-86b4-a3f377fbd3ab" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Debug/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="GetNextBallBallCollisionTestOneColl" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="5706bc5c-9e11-4309-7da3-559b179a1156" executionId="e8d2a065-bf83-4f7e-86b4-a3f377fbd3ab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="e8d2a065-bf83-4f7e-86b4-a3f377fbd3ab" testId="5706bc5c-9e11-4309-7da3-559b179a1156" testName="GetNextBallBallCollisionTestOneColl" computerName="EWA-DELLV131" duration="00:01:04.3336797" startTime="2014-07-11T19:38:33.8420896+02:00" endTime="2014-07-11T19:39:38.1757693+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e8d2a065-bf83-4f7e-86b4-a3f377fbd3ab">
+    </UnitTestResult>
+  </Results>
+</TestRun>

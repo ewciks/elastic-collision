@@ -33,11 +33,35 @@ namespace collision
         SpriteFont font;
         Vector2 fontPos;
         string nextCollision;
+        bool isRunning = false;
+        KeyboardState oldState;
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+        }
+
+        public void CalcAndSetNextCol()
+        {
+            collision.GetNextBallWallCollision();
+            collision.GetNextBallBallCollision();
+            if (collision.NextCollisions.Count > 0)
+            {
+                collisionTimer = collision.NextCollisions[0].Time;
+                isNextCollisionTimeKnown = true;
+                // setting next collision string
+                nextCollision = "";
+                foreach (NextCollision nc in collision.NextCollisions)
+                {
+                    nextCollision += " / " + nc.ToString();
+                }
+            }
+            else
+            {
+                isNextCollisionTimeKnown = false;
+                nextCollision = " / unknown";
+            }
         }
 
         /// <summary>
@@ -52,16 +76,16 @@ namespace collision
             List<Ball2> balls = new List<Ball2>();
             // ball-wall and ball-ball test
             /*
-            balls.Add(new Ball2(new Vector2(0, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));  // ball-wall vertical test
+            balls.Add(new Ball2(new Vector2(0, 0.05f), new Vector2(0.1f, 0.03f), 0.01f, 0.01f));  // ball-wall vertical test
             balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));  // ball-wall horizontal test
-            balls.Add(new Ball2(new Vector2(0.05f, 0.01f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));  // ball-wall inclined test
-            */
+            balls.Add(new Ball2(new Vector2(0.05f, 0.01f), new Vector2(0.2f, 0.01f), 0.01f, 0.01f));  // ball-wall inclined test
+            
             // ball-ball horizontal test
             balls.Add(new Ball2(new Vector2(0.05f, 0), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(0.0f, 0), new Vector2(0.2f, 0.01f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(0.1f, 0), new Vector2(0.1f, 0.1f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(-0.1f, 0), new Vector2(0.4f, 0.1f), 0.01f, 0.01f));
-           /* 
+           
             // ball-ball vertical test
             balls.Add(new Ball2(new Vector2(0.0f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(0.0f, -0.1f), new Vector2(0.1f, 0.15f), 0.01f, 0.01f)); 
@@ -69,12 +93,27 @@ namespace collision
             // ball-ball inclined test
             balls.Add(new Ball2(new Vector2(0.05f, 0.05f), new Vector2(0.1f, 0.01f), 0.01f, 0.01f));
             balls.Add(new Ball2(new Vector2(-0.1f, -0.1f), new Vector2(0.19f, 0.1f), 0.01f, 0.01f));
-            
+             
             // triple ball collision test
-            balls.Add(new Ball2(new Vector2(0.10f, 0.0f), new Vector2(0.0f, 0.10f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(-0.10f, 0.0f), new Vector2(0.2f, 0.10f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.10f), new Vector2(0.10f, 0.0f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.1f, 0.0f), new Vector2(0.0f, 0.10f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(-0.1f, 0.0f), new Vector2(0.2f, 0.10f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.1f), new Vector2(0.10f, 0.0f), 0.01f, 0.01f));
            */
+
+            
+            // billard start test
+            
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.04f, 0.08f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.04f, 0.1f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.04f, 0.12f), 0.01f, 0.01f));
+
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.06f, 0.09f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.06f, 0.11f), 0.01f, 0.01f));
+            
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.06f + 0.02f, 0.10f), 0.01f, 0.01f));
+
+            balls.Add(new Ball2(new Vector2(-0.05f, 0.0f), new Vector2(0.3f, 0.10f), 0.01f, 0.01f));
+            
 
             List<Wall2> walls = new List<Wall2>();
             walls.Add(new Wall2(new Vector2(0.0f, 0.0f), WallOrientation.Left));
@@ -84,6 +123,7 @@ namespace collision
 
             collision = new Collision(balls, walls);
             kin_energy = collision.CalcTotalKineticEnergy();
+            CalcAndSetNextCol();
 
             base.Initialize();
         }
@@ -118,6 +158,23 @@ namespace collision
             // TODO: Unload any non ContentManager content here
         }
 
+        private void UpdateInput()
+        {
+            KeyboardState newState = Keyboard.GetState();
+            // Is the SPACE key down?
+            if (newState.IsKeyDown(Keys.Space))
+            {
+                // If not down last update, key has just been pressed.
+                if (!oldState.IsKeyDown(Keys.Space))
+                {
+                    if (isRunning) isRunning = false;
+                    else isRunning = true;
+                }
+            }
+            // Update saved state.
+            oldState = newState;
+        }
+
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -125,57 +182,38 @@ namespace collision
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-
-            // TODO: Add your update logic here
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-            if (!isNextCollisionTimeKnown)
+            UpdateInput();
+            if (isRunning)
             {
-                collision.GetNextBallWallCollision();
-                collision.GetNextBallBallCollision();
-                if (collision.NextCollisions.Count > 0)
+                // TODO: Add your update logic here
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                collisionTimer -= elapsed;
+                collision.MoveBallsToTime(elapsed);
+                if (isNextCollisionTimeKnown && collisionTimer <= 0)
                 {
-                    collisionTimer = collision.NextCollisions[0].Time;
-                    isNextCollisionTimeKnown = true;
-                    // setting next collision string
-                    nextCollision = "";
+                    //if (counter == 126)
+                    //{
+                    //}
+                    collision.MoveBallsToTime(collisionTimer);
                     foreach (NextCollision nc in collision.NextCollisions)
                     {
-                        nextCollision += " / " + nc.ToString();
+                        if ((nc.Obj1.M < Wall2.WALL_MASS && nc.Obj2.M >= Wall2.WALL_MASS) ||
+                            (nc.Obj1.M >= Wall2.WALL_MASS && nc.Obj2.M < Wall2.WALL_MASS))
+                        {
+                            collision.CalcPostImpactVBallWall(nc);
+                        }
+                        else
+                        {
+                            collision.CalcPostImpactVBallBall(nc);
+                        }
+                        counter++;
                     }
-                }
-                else
-                {
                     isNextCollisionTimeKnown = false;
-                    nextCollision = " / unknown";
+                    kin_energy = collision.CalcTotalKineticEnergy();
+                    CalcAndSetNextCol();
                 }
-
             }
-            collisionTimer -= elapsed;
-            if (isNextCollisionTimeKnown && collisionTimer <= 0)
-            {
-                foreach (NextCollision nc in collision.NextCollisions)
-                {
-                    if ((nc.Obj1.M < Wall2.WALL_MASS && nc.Obj2.M >= Wall2.WALL_MASS) ||
-                        (nc.Obj1.M >= Wall2.WALL_MASS && nc.Obj2.M < Wall2.WALL_MASS))
-                    {
-                        collision.CalcPostImpactVBallWall(nc);
-                    }
-                    else
-                    {
-                        collision.CalcPostImpactVBallBall(nc);
-                    }
-                    counter++;
-                }
-                isNextCollisionTimeKnown = false;
-                kin_energy = collision.CalcTotalKineticEnergy();
-            }
-            
-            collision.MoveBallsToTime(elapsed);
-
+         
             base.Update(gameTime);
         }
 
@@ -194,7 +232,8 @@ namespace collision
                 Vector2 position = b.Coordinates * METER_TO_PIXEL_FACTOR;
                 Vector2 origin = new Vector2(2.0f * b.R * METER_TO_PIXEL_FACTOR, 2.0f * b.R * METER_TO_PIXEL_FACTOR);
                 float scale = R_SCALE * b.R;
-                if (b.Id % 2 == 0)
+                spriteBatch.Draw(ballsSpriteTextureBlack, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
+                /*if (b.Id % 2 == 0)
                 {
                     spriteBatch.Draw(ballsSpriteTextureBlack, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
                 }
@@ -205,6 +244,23 @@ namespace collision
                 else if(b.Id == 1)
                 {
                     spriteBatch.Draw(ballsSpriteTextureRed, position, null, Color.White, 0.0f, origin, scale, SpriteEffects.None, 0);
+                }*/
+            }
+            foreach (NextCollision nc in collision.NextCollisions)
+            {
+                // which collision
+                if (nc.Obj1.M < Wall2.WALL_MASS && nc.Obj2.M < Wall2.WALL_MASS)
+                {
+                    Ball2 b1 = (Ball2)nc.Obj1;
+                    Ball2 b2 = (Ball2)nc.Obj2;
+                    Vector2 position1 = b1.Coordinates * METER_TO_PIXEL_FACTOR;
+                    Vector2 origin1 = new Vector2(2.0f * b1.R * METER_TO_PIXEL_FACTOR, 2.0f * b1.R * METER_TO_PIXEL_FACTOR);
+                    float scale1 = R_SCALE * b1.R;
+                    Vector2 position2 = b2.Coordinates * METER_TO_PIXEL_FACTOR;
+                    Vector2 origin2 = new Vector2(2.0f * b2.R * METER_TO_PIXEL_FACTOR, 2.0f * b2.R * METER_TO_PIXEL_FACTOR);
+                    float scale2 = R_SCALE * b2.R;
+                    spriteBatch.Draw(ballsSpriteTextureRed, position1, null, Color.White, 0.0f, origin1, scale1, SpriteEffects.None, 0);
+                    spriteBatch.Draw(ballsSpriteTextureRed, position2, null, Color.White, 0.0f, origin2, scale2, SpriteEffects.None, 0);
                 }
             }
             spriteBatch.Draw(options, new Rectangle((int)optionsPos.X, (int)optionsPos.Y, (int)optionsSize.X, (int)optionsSize.Y), Color.WhiteSmoke);
@@ -212,8 +268,6 @@ namespace collision
             spriteBatch.DrawString(font, "Total kinetic energy: " + kin_energy.ToString() + "[J]", fontPos + new Vector2(0, font.LineSpacing), Color.Green);
             spriteBatch.DrawString(font, "Next collision:" + nextCollision, fontPos + new Vector2(0, 2 * font.LineSpacing), Color.Green);
             spriteBatch.End();
-
-
 
             base.Draw(gameTime);
         }

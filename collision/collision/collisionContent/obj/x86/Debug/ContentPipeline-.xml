@@ -7,17 +7,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\red_circle_100px.xnb</Output>
-      <Time>2014-07-06T12:01:49.7845977+02:00</Time>
-    </Item>
-    <Item>
-      <Source>counter.spritefont</Source>
-      <Name>counter</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\counter.xnb</Output>
-      <Time>2014-07-07T18:36:28.747598+02:00</Time>
+      <Output>C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\red_circle_100px.xnb</Output>
+      <Time>2014-07-09T23:34:01.8680212+02:00</Time>
     </Item>
     <Item>
       <Source>black_circle_100px.png</Source>
@@ -25,8 +16,8 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\black_circle_100px.xnb</Output>
-      <Time>2014-07-06T19:50:31.6841503+02:00</Time>
+      <Output>C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\black_circle_100px.xnb</Output>
+      <Time>2014-07-09T23:34:01.8440198+02:00</Time>
     </Item>
     <Item>
       <Source>yellow_circle_100px.png</Source>
@@ -34,8 +25,17 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
-      <Output>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\yellow_circle_100px.xnb</Output>
-      <Time>2014-07-07T18:53:49.6081318+02:00</Time>
+      <Output>C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\yellow_circle_100px.xnb</Output>
+      <Time>2014-07-09T23:34:01.8680212+02:00</Time>
+    </Item>
+    <Item>
+      <Source>counter.spritefont</Source>
+      <Name>counter</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\counter.xnb</Output>
+      <Time>2014-07-09T23:34:01.8640209+02:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -44,10 +44,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collisionContent\</RootDirectory>
-      <LoggerRootDirectory>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collisionContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\GitHub\elastic_collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collisionContent\</RootDirectory>
+      <LoggerRootDirectory>C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collisionContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

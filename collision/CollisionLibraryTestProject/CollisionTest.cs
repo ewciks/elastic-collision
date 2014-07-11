@@ -133,7 +133,7 @@ namespace CollisionLibraryTestProject
             Collision target = new Collision(balls, new List<Wall2>());
             target.GetNextBallBallCollision();
             Assert.AreEqual(target.NextCollisions.Count, 1);
-            Assert.AreEqual(target.NextCollisions[0].Obj2, balls[1]);
+            Assert.AreEqual(target.NextCollisions[0].Obj2, balls[3]);
             //string result = target.NextCollisions[0].Time + " / " + target.NextCollisions[0].Obj1.Id + " / " + target.NextCollisions[0].Obj2.Id;
         }
 
@@ -152,7 +152,7 @@ namespace CollisionLibraryTestProject
             Collision target = new Collision(balls, new List<Wall2>());
             target.GetNextBallBallCollision();
             Assert.AreEqual(target.NextCollisions.Count, 2);
-            Assert.AreEqual(target.NextCollisions[0].Obj2, balls[1]);
+            Assert.AreEqual(target.NextCollisions[0].Obj2, balls[3]);
             //string result = target.NextCollisions[0].Time + " / " + target.NextCollisions[0].Obj1.Id + " / " + target.NextCollisions[0].Obj2.Id + " || "
             //        + target.NextCollisions[1].Time + " / " + target.NextCollisions[1].Obj1.Id + " / " + target.NextCollisions[1].Obj2.Id;
         }

@@ -7,3 +7,12 @@ C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibraryTestProj
 C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibraryTestProject\obj\Debug\CollisionLibraryTestProject.pdb
 C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Debug\CollisionLibrary_Accessor.dll
 C:\GitHub\elastic_collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Debug\CollisionLibrary_Accessor.pdb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Debug\CollisionLibraryTestProject.dll
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Debug\CollisionLibraryTestProject.pdb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Debug\CollisionLibrary.dll
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Debug\CollisionLibrary.pdb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Debug\CollisionLibrary_Accessor.dll
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Debug\CollisionLibrary_Accessor.pdb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\obj\Debug\CollisionLibraryTestProject.csprojResolveAssemblyReference.cache
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\obj\Debug\CollisionLibraryTestProject.dll
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\obj\Debug\CollisionLibraryTestProject.pdb

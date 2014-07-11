@@ -61,8 +61,8 @@ namespace CollisionLibrary
             {
                 x1 = (-b - delta) / (2.0f * a);
                 x2 = (-b + delta) / (2.0f * a);
-                if (x1 >= 0.0f && x1 <= x2) return x1;
-                else if (x2 >= 0.0f && x2 <= x1) return x2;
+                if (x1 > 0.0f && x1 <= x2) return x1;
+                else if (x2 > 0.0f) return x2;
                 else return -1.0f;
             }
             else return -1.0f;

@@ -61,17 +61,17 @@ namespace CollisionLibrary
         /// <summary>
         /// Move ball with it's velocity in uniform recrtilinear motion for time t.
         /// </summary>
-        /// <param name="t">Time in seconds, must be bigger then zero.</param>
+        /// <param name="t">Time in seconds.</param>
         public void MoveBallUniformRectilinearMotion(float t)
         {
-            if(t > 0) this.Coordinates += this.V * t;
+            this.Coordinates += this.V * t;
         }
         #endregion move
 
         #region overrides
         public override string ToString()
         {
-            return "V: (" + this.V.X + ", " + this.V.Y
+            return "ID: [" + this.Id + "], V: (" + this.V.X + ", " + this.V.Y
                 + "), coord: (" + this.Coordinates.X + ", " + this.Coordinates.Y + "), "
                 + "mass: " + this.M + ", radius: " + this.R;
         }
