@@ -41,11 +41,11 @@ namespace CollisionLibrary
             if (Obj1.M < Wall2.WALL_MASS && Obj2.M >= Wall2.WALL_MASS)
             {
                 Wall2 w = (Wall2)(Obj2);
-                return "ball [id=" + Obj1.Id + "] - wall [" + w.Orientation.ToString() + "]";
+                return "ball [id=" + Obj1.Id + "] - wall [" + w.Orientation.ToString() + "] time: " + Time;
             }
             else
             {
-                return "ball [id=" + Obj1.Id + "] - ball [id=" + Obj2.Id + "]";
+                return "ball [id=" + Obj1.Id + "] - ball [id=" + Obj2.Id + "] time: " + Time;
             }
         }
         #endregion

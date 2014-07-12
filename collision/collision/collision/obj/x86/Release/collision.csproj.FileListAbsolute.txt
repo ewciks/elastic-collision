@@ -1,0 +1,12 @@
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Release\Content\red_circle_100px.xnb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Release\Content\black_circle_100px.xnb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Release\Content\yellow_circle_100px.xnb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Release\Content\counter.xnb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Release\collision.exe
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Release\collision.pdb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Release\CollisionLibrary.dll
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Release\CollisionLibrary.pdb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\obj\x86\Release\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\obj\x86\Release\collision.exe
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\obj\x86\Release\collision.pdb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\obj\x86\Release\collision.csprojResolveAssemblyReference.cache

@@ -58,7 +58,7 @@ namespace collision
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            this.Window.Title = "Perfect elastic collisions 2D";
+            this.Window.Title = "Perfect elastic collisions 2D - Ewa Sobieniak";
             this.IsMouseVisible = true;
             Mouse.WindowHandle = Window.Handle;
         }
@@ -222,6 +222,8 @@ namespace collision
             collision.GetNextBallBallCollision();
             if (collision.NextCollisions.Count > 0)
             {
+                List<NextCollision> sortedNextCollisions = collision.NextCollisions.OrderBy(x => x.Time).ToList();
+                collision.NextCollisions = sortedNextCollisions;
                 collisionTimer = collision.NextCollisions[0].Time;
                 isNextCollisionTimeKnown = true;
                 // setting next collision string
@@ -419,6 +421,7 @@ namespace collision
                 if (isNextCollisionTimeKnown && collisionTimer <= 0)
                 {
                     collision.MoveBallsToTime(collisionTimer);
+                    int i = 0;
                     foreach (NextCollision nc in collision.NextCollisions)
                     {
                         if ((nc.Obj1.M < Wall2.WALL_MASS && nc.Obj2.M >= Wall2.WALL_MASS) ||
@@ -430,7 +433,12 @@ namespace collision
                         {
                             collision.CalcPostImpactVBallBall(nc);
                         }
+                        if (i + 1 < collision.NextCollisions.Count)
+                        {
+                            collision.MoveBallsToTime(collision.NextCollisions[i + 1].Time - nc.Time);
+                        }
                         counter++;
+                        i++;
                     }
                     isNextCollisionTimeKnown = false;
                     kin_energy = collision.CalcTotalKineticEnergy();

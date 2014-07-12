@@ -1,0 +1,9 @@
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Release\CollisionLibraryTestProject.dll
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Release\CollisionLibraryTestProject.pdb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Release\CollisionLibrary.dll
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Release\CollisionLibrary.pdb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Release\CollisionLibrary_Accessor.dll
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\bin\Release\CollisionLibrary_Accessor.pdb
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\obj\Release\CollisionLibraryTestProject.csprojResolveAssemblyReference.cache
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\obj\Release\CollisionLibraryTestProject.dll
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\obj\Release\CollisionLibraryTestProject.pdb

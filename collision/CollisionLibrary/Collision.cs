@@ -150,21 +150,24 @@ namespace CollisionLibrary
                     float vydiff2 = vydiff * vydiff;
                     float r_sum = Balls[i].R + Balls[j].R;
                     float r_sum2 = r_sum * r_sum;
-                    float a = vxdiff2 + vydiff2;
-                    float b = 2.0f * xdiff * vxdiff + 2.0f * ydiff * vydiff;
-                    float c = xdiff2 + ydiff2 - r_sum2;     
-                    QuadraticEquation qe = new QuadraticEquation(a, b, c);
-                    float time = qe.CalcSmallerPositiveX();
-                    if ((float)Math.Round((decimal)time, 3) > 0.0f && (time + TIME_TO_NEXT_COLLISION) < nc.Time)   
+                    if (xdiff2 + ydiff2 >= r_sum2)
                     {
-                        nc = new NextCollision(time, Balls[i], Balls[j]);
-                        this.NextCollisions = new List<NextCollision>();
-                        this.NextCollisions.Add(nc);
-                    }
-                    else if ((float)Math.Round((decimal)time, 3) > 0.0f && (time - TIME_TO_NEXT_COLLISION) <= nc.Time)
-                    {
-                        nc = new NextCollision(time, Balls[i], Balls[j]);
-                        this.NextCollisions.Add(nc);
+                        float a = vxdiff2 + vydiff2;
+                        float b = 2.0f * xdiff * vxdiff + 2.0f * ydiff * vydiff;
+                        float c = xdiff2 + ydiff2 - r_sum2;
+                        QuadraticEquation qe = new QuadraticEquation(a, b, c);
+                        float time = qe.CalcSmallerPositiveX();
+                        if ((float)Math.Round((decimal)time, 5) > 0.0f && (time + TIME_TO_NEXT_COLLISION) < nc.Time)
+                        {
+                            nc = new NextCollision(time, Balls[i], Balls[j]);
+                            this.NextCollisions = new List<NextCollision>();
+                            this.NextCollisions.Add(nc);
+                        }
+                        else if ((float)Math.Round((decimal)time, 5) > 0.0f && (time - TIME_TO_NEXT_COLLISION) <= nc.Time)
+                        {
+                            nc = new NextCollision(time, Balls[i], Balls[j]);
+                            this.NextCollisions.Add(nc);
+                        }
                     }
                 }
             }
