@@ -29,7 +29,7 @@ namespace collision
         Texture2D ballsSpriteTextureRed, ballsSpriteTextureBlack, ballsSpriteTextureYellow;
         const float METER_TO_PIXEL_FACTOR = 2000.0f; // 1m = 2000 px, to have value in [m] you have to multiply it by METER_TO_PIXEL_FACTOR
         const float R_SCALE = 40.0f;    // for 100x100 px ball picture to have 1x1m picutre you have to multiply it by R_SCALE
-        int ballsStartingPositionOption = 0;
+        int ballsStartingPositionOption = 5;
         const int BALLS_STARTING_POSITIONS = 6;
 
         // printing bottom panel with data
@@ -44,6 +44,7 @@ namespace collision
         int selectedBallId;
         int selectedBall;
         string optionsBallPositionsString;
+        string manualInputSugestion;
 
         // pause printing
         bool isRunning;
@@ -51,7 +52,7 @@ namespace collision
         Vector2 pausePos;
         Vector2 pauseSize;
         Vector2 pauseStringPos;
-        const string pauseString = "PAUSE (press: )\n space - resume\n tab - switch balls\n page up/down - switch ball starting positions";
+        const string pauseString = "PAUSE (press: )\n space - resume\n tab - switch balls\n page down - switch ball starting positions";
 
         public Game1()
         {
@@ -60,6 +61,39 @@ namespace collision
             this.Window.Title = "Perfect elastic collisions 2D";
             this.IsMouseVisible = true;
             Mouse.WindowHandle = Window.Handle;
+        }
+
+        private bool WontBallsHaveTheSamePosition(Ball2 ball, Vector2 newPos)
+        {
+            bool isPosOk = true;
+            foreach (Ball2 b in collision.Balls)
+            {
+                if (b.Id != ball.Id)
+                {
+                    float dx, dy;
+                    if (b.Coordinates.X >= ball.Coordinates.X) dx = b.Coordinates.X - newPos.X - b.R - ball.R;
+                    else dx = newPos.X - b.Coordinates.X - b.R - ball.R;
+                    if (b.Coordinates.Y >= ball.Coordinates.Y) dy = b.Coordinates.Y - newPos.Y - b.R - ball.R;
+                    else dy = newPos.Y - b.Coordinates.Y - b.R - ball.R;
+                    if (dx <= 0.0f && dy <= 0.0f) isPosOk = false;
+                }
+            }
+            return isPosOk;
+        }
+
+        private bool WontBallHitWalls(Ball2 ball, Vector2 newPos)
+        {
+            bool isPosOk = true;
+            foreach (Wall2 w in collision.Walls)
+            {
+                float dx, dy;
+                if (w.Coordinates.X >= ball.Coordinates.X) dx = w.Coordinates.X - newPos.X - ball.R;
+                else dx = newPos.X - w.Coordinates.X - ball.R;
+                if (w.Coordinates.Y >= ball.Coordinates.Y) dy = w.Coordinates.Y - newPos.Y - ball.R;
+                else dy = newPos.Y - w.Coordinates.Y - ball.R;
+                if (dx <= 0.0f || dy <= 0.0f) isPosOk = false;
+            }
+            return isPosOk;
         }
 
         private void UpdateKeyboardInput()
@@ -91,21 +125,44 @@ namespace collision
                     StartNewSimulation();
                 }
             }
-            else if (newState.IsKeyDown(Keys.PageUp))
+            // MANUAL INPUT OPTION 
+            else if (ballsStartingPositionOption == 5 && !isRunning && newState.IsKeyDown(Keys.B)) // manual input - creating balls
             {
-                if (!oldKeyboardState.IsKeyDown(Keys.PageUp))
+                if (!oldKeyboardState.IsKeyDown(Keys.B))
                 {
-                    ballsStartingPositionOption = (ballsStartingPositionOption - 1) % BALLS_STARTING_POSITIONS;
-                    StartNewSimulation();
+                    Ball2 ball = new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.1f, 0.05f), 0.01f, 0.01f);
+                    if (WontBallsHaveTheSamePosition(ball, ball.Coordinates) && WontBallHitWalls(ball, ball.Coordinates))
+                    {
+                        collision.Balls.Add(ball);
+                        selectedBall = collision.Balls.Count - 1;
+                        selectedBallId = collision.Balls[selectedBall].Id;
+                        manualInputSugestion = "Move ball to it's destination by arrows.";
+                    }
+                    else
+                    {
+                        manualInputSugestion = "Can't create a new ball - there's already an object in starting posistion [" + ball.Coordinates.ToString() + "].";
+                    }
                 }
             }
-            /*else if (newState.IsKeyDown(Keys.Enter) && ballsStartingPositionOption == 5)    // manual input
+            else if (ballsStartingPositionOption == 5 && !isRunning && collision.Balls.Count > 0 
+                && (newState.IsKeyDown(Keys.Down) || newState.IsKeyDown(Keys.Up) || newState.IsKeyDown(Keys.Left) || newState.IsKeyDown(Keys.Right))) // manual input - moving balls
             {
-                if (!oldKeyboardState.IsKeyDown(Keys.Enter))
+                Ball2 ball = collision.Balls[selectedBall];
+                Vector2 newPos = Vector2.Zero;
+                if(newState.IsKeyDown(Keys.Down)) newPos = ball.Coordinates + new Vector2(0.0f, 0.001f);
+                else if (newState.IsKeyDown(Keys.Up)) newPos = ball.Coordinates + new Vector2(0.0f, -0.001f);
+                else if (newState.IsKeyDown(Keys.Left)) newPos = ball.Coordinates + new Vector2(-0.001f, 0.0f);
+                else if (newState.IsKeyDown(Keys.Right)) newPos = ball.Coordinates + new Vector2(0.001f, 0.0f);
+                if (WontBallsHaveTheSamePosition(ball, newPos) && WontBallHitWalls(ball, newPos))
                 {
-                    collision.Balls.Add(new Ball2(Vector2.Zero, new Vector2(mouseState.X/1000.0f, mouseState.Y/1000.0f), 0.01f, 0.01f));
+                    collision.Balls[selectedBall].Coordinates = newPos;
+                    manualInputSugestion = "Move ball to it's destination by arrows.";
                 }
-            }*/
+                else
+                {
+                    manualInputSugestion = "Can't move the ball to this point - there's already an object in this posistion.";
+                }
+            }
             // Update saved state.
             oldKeyboardState = newState;
         }
@@ -179,9 +236,19 @@ namespace collision
             optionsBallPositionsString = "Likewise billard start collision.";
         }
 
-        private void BallsManualInput()
+        private void BallsManualInput(List<Ball2> balls)
         {
+            /*balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.1f, 0.05f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.1f, 0.10f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.1f, 0.15f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.15f, 0.05f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.15f, 0.10f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.15f, 0.15f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.2f, 0.05f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.2f, 0.10f), 0.01f, 0.01f));
+            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.2f, 0.15f), 0.01f, 0.01f));*/
             optionsBallPositionsString = "Manual input.";
+            manualInputSugestion = "Press 'b' to create a new ball. Simulation has to be paused.";
         }
 
         private List<Ball2> AddBalls(int option)
@@ -205,10 +272,10 @@ namespace collision
                     BillardStartTest(balls);
                     break;
                 case 5:
-                    BallsManualInput();
+                    BallsManualInput(balls);
                     break;
                 default:
-                    BallsManualInput();
+                    BallsManualInput(balls);
                     break;
             }
             return balls;
@@ -390,6 +457,7 @@ namespace collision
             spriteBatch.DrawString(font, "Total kinetic energy: " + kin_energy.ToString() + "[J]", fontPos + new Vector2(0, 2 * font.LineSpacing), Color.Green);
             spriteBatch.DrawString(font, "Next collision:" + nextCollision, fontPos + new Vector2(0, 3 * font.LineSpacing), Color.Green);
             if(collision.Balls.Count > 0) spriteBatch.DrawString(font, "Selected ball: " + collision.Balls.Find(b => b.Id == selectedBallId).ToString(), fontPos + new Vector2(0, 4 * font.LineSpacing), Color.Green);
+            if (ballsStartingPositionOption == 5) spriteBatch.DrawString(font, manualInputSugestion, fontPos + new Vector2(0, 5 * font.LineSpacing), Color.Red);
             if (!isRunning)
             {
                 spriteBatch.Draw(pause, new Rectangle((int)pausePos.X, (int)pausePos.Y, (int)pauseSize.X, (int)pauseSize.Y), Color.Gray * 0.5f);

@@ -41,10 +41,6 @@ namespace CollisionLibrary
             this.Id = instances;
         }
 
-        ~CollisionObject()
-        {
-            instances--;
-        }
         #endregion constructors
 
         #region accessors
