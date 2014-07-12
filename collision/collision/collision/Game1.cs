@@ -91,7 +91,7 @@ namespace collision
                 else dx = newPos.X - w.Coordinates.X - ball.R;
                 if (w.Coordinates.Y >= ball.Coordinates.Y) dy = w.Coordinates.Y - newPos.Y - ball.R;
                 else dy = newPos.Y - w.Coordinates.Y - ball.R;
-                if (dx <= 0.0f || dy <= 0.0f) isPosOk = false;
+                if (dx <= 0 || dy <= 0) isPosOk = false;
             }
             return isPosOk;
         }
@@ -130,7 +130,7 @@ namespace collision
             {
                 if (!oldKeyboardState.IsKeyDown(Keys.B))
                 {
-                    Ball2 ball = new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.1f, 0.05f), 0.01f, 0.01f);
+                    Ball2 ball = new Ball2(new Vector2(0.01f, 0.01f), new Vector2(0.1f, 0.05f), 0.01f, 0.01f);
                     if (WontBallsHaveTheSamePosition(ball, ball.Coordinates) && WontBallHitWalls(ball, ball.Coordinates))
                     {
                         collision.Balls.Add(ball);
@@ -156,12 +156,17 @@ namespace collision
                     else if (newState.IsKeyDown(Keys.Subtract)) newM = ball.M - 0.001f;
                     ball.M = newM;
                     ball.R = newM;
-                    if ((newM > 0.03f || newM < 0.001) && (!WontBallsHaveTheSamePosition(ball, Vector2.Zero) || !WontBallHitWalls(ball, Vector2.Zero)))
+                    if (newM <= 0.03f && newM >= 0.001f && WontBallsHaveTheSamePosition(ball, ball.Coordinates) && WontBallHitWalls(ball, ball.Coordinates))
+                    {
+                        manualInputSugestion = "Move ball to it's destination by arrows. Change: size/mass with 'm' and +/-, velocity with x and +/- or y and +/-.";
+                    }
+                    else
                     {
                         ball.M = oldM;
                         ball.R = oldM;
-                        manualInputSugestion = "Mass and radius have to be between <0.001, 0.03>.";
+                        manualInputSugestion = "Mass and radius have to be between <0.001, 0.03>. Ball can't reach other object.";
                     }
+
                 }
             }
             else if (!isRunning && collision.Balls.Count > 0
@@ -182,6 +187,10 @@ namespace collision
                         ball.V = oldV;
                         manualInputSugestion = "Velocity can't be bigger then (+/-)1.0f.";
                     }
+                    else
+                    {
+                        manualInputSugestion = "Move ball to it's destination by arrows. Change: size/mass with 'm' and +/-, velocity with x and +/- or y and +/-.";
+                    }
                 }
             }
             else if (!isRunning && collision.Balls.Count > 0
@@ -196,6 +205,7 @@ namespace collision
                 if (WontBallsHaveTheSamePosition(ball, newPos) && WontBallHitWalls(ball, newPos))
                 {
                     collision.Balls[selectedBall].Coordinates = newPos;
+                    manualInputSugestion = "Move ball to it's destination by arrows. Change: size/mass with 'm' and +/-, velocity with x and +/- or y and +/-.";
                 }
                 else
                 {
@@ -331,7 +341,7 @@ namespace collision
             kin_energy = 0.0f;
             isRunning = false;
             selectedBall = 0;
-            manualInputSugestion = "Press 'b' to create a new ball. Simulation has to be paused.";
+            manualInputSugestion = "Press 'b' to create a new ball. Simulation has to be paused during changing parameters.";
 
             List<Ball2> balls = AddBalls(ballsStartingPositionOption);
             List<Wall2> walls = AddWallsAsRectangle();
@@ -482,7 +492,7 @@ namespace collision
                 }
             }
             spriteBatch.Draw(options, new Rectangle((int)optionsPos.X, (int)optionsPos.Y, (int)optionsSize.X, (int)optionsSize.Y), Color.WhiteSmoke);
-            spriteBatch.DrawString(font, "Starting position: " + optionsBallPositionsString, fontPos, Color.Green);
+            spriteBatch.DrawString(font, "Starting position: " + optionsBallPositionsString, fontPos, Color.Black);
             spriteBatch.DrawString(font, "Collisions number: " + counter.ToString(), fontPos + new Vector2(0, font.LineSpacing), Color.Green);
             spriteBatch.DrawString(font, "Total kinetic energy: " + kin_energy.ToString() + "[J]", fontPos + new Vector2(0, 2 * font.LineSpacing), Color.Green);
             spriteBatch.DrawString(font, "Next collision:" + nextCollision, fontPos + new Vector2(0, 3 * font.LineSpacing), Color.Green);
