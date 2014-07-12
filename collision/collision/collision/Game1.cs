@@ -106,7 +106,7 @@ namespace collision
                 if (!oldKeyboardState.IsKeyDown(Keys.Space))
                 {
                     if (isRunning) isRunning = false;
-                    else isRunning = true;
+                    else { isRunning = true; CalcAndSetNextCol(); }
                 }
             }
             else if (newState.IsKeyDown(Keys.Tab))
@@ -126,7 +126,7 @@ namespace collision
                 }
             }
             // MANUAL INPUT OPTION 
-            else if (ballsStartingPositionOption == 5 && !isRunning && newState.IsKeyDown(Keys.B)) // manual input - creating balls
+            else if (!isRunning && newState.IsKeyDown(Keys.B)) // manual input - creating balls
             {
                 if (!oldKeyboardState.IsKeyDown(Keys.B))
                 {
@@ -136,7 +136,7 @@ namespace collision
                         collision.Balls.Add(ball);
                         selectedBall = collision.Balls.Count - 1;
                         selectedBallId = collision.Balls[selectedBall].Id;
-                        manualInputSugestion = "Move ball to it's destination by arrows.";
+                        manualInputSugestion = "Move ball to it's destination by arrows. Change: size/mass with 'm' and +/-, velocity with x and +/- or y and +/-.";
                     }
                     else
                     {
@@ -144,19 +144,58 @@ namespace collision
                     }
                 }
             }
-            else if (ballsStartingPositionOption == 5 && !isRunning && collision.Balls.Count > 0 
+            else if (!isRunning && collision.Balls.Count > 0
+                && newState.IsKeyDown(Keys.M) && (newState.IsKeyDown(Keys.Add) || newState.IsKeyDown(Keys.Subtract))) // manual input - resizing the ball
+            {
+                if (!oldKeyboardState.IsKeyDown(Keys.Add) && !oldKeyboardState.IsKeyDown(Keys.Subtract))
+                {
+                    Ball2 ball = collision.Balls[selectedBall];
+                    float oldM = ball.M;
+                    float newM = ball.M;
+                    if (newState.IsKeyDown(Keys.Add)) newM = ball.M + 0.001f;
+                    else if (newState.IsKeyDown(Keys.Subtract)) newM = ball.M - 0.001f;
+                    ball.M = newM;
+                    ball.R = newM;
+                    if ((newM > 0.03f || newM < 0.001) && (!WontBallsHaveTheSamePosition(ball, Vector2.Zero) || !WontBallHitWalls(ball, Vector2.Zero)))
+                    {
+                        ball.M = oldM;
+                        ball.R = oldM;
+                        manualInputSugestion = "Mass and radius have to be between <0.001, 0.03>.";
+                    }
+                }
+            }
+            else if (!isRunning && collision.Balls.Count > 0
+            && (newState.IsKeyDown(Keys.X) || newState.IsKeyDown(Keys.Y)) && (newState.IsKeyDown(Keys.Add) || newState.IsKeyDown(Keys.Subtract))) // manual input - changing velocity
+            {
+                if (!oldKeyboardState.IsKeyDown(Keys.Add) && !oldKeyboardState.IsKeyDown(Keys.Subtract))
+                {
+                    Ball2 ball = collision.Balls[selectedBall];
+                    Vector2 oldV = ball.V;
+                    Vector2 newV = ball.V;
+                    if (newState.IsKeyDown(Keys.Add) && newState.IsKeyDown(Keys.X)) newV = ball.V + new Vector2(0.01f, 0.0f);
+                    else if (newState.IsKeyDown(Keys.Subtract) && newState.IsKeyDown(Keys.X)) newV = ball.V + new Vector2(-0.01f, 0.0f);
+                    else if (newState.IsKeyDown(Keys.Add) && newState.IsKeyDown(Keys.Y)) newV = ball.V + new Vector2(0.0f, 0.01f);
+                    else if (newState.IsKeyDown(Keys.Subtract) && newState.IsKeyDown(Keys.Y)) newV = ball.V + new Vector2(0.0f, -0.01f);
+                    ball.V = newV;
+                    if (newV.X > 0.1f || newV.X < -0.1f || newV.Y > 0.1f || newV.Y < -0.1f)
+                    {
+                        ball.V = oldV;
+                        manualInputSugestion = "Velocity can't be bigger then (+/-)1.0f.";
+                    }
+                }
+            }
+            else if (!isRunning && collision.Balls.Count > 0
                 && (newState.IsKeyDown(Keys.Down) || newState.IsKeyDown(Keys.Up) || newState.IsKeyDown(Keys.Left) || newState.IsKeyDown(Keys.Right))) // manual input - moving balls
             {
                 Ball2 ball = collision.Balls[selectedBall];
                 Vector2 newPos = Vector2.Zero;
-                if(newState.IsKeyDown(Keys.Down)) newPos = ball.Coordinates + new Vector2(0.0f, 0.001f);
+                if (newState.IsKeyDown(Keys.Down)) newPos = ball.Coordinates + new Vector2(0.0f, 0.001f);
                 else if (newState.IsKeyDown(Keys.Up)) newPos = ball.Coordinates + new Vector2(0.0f, -0.001f);
                 else if (newState.IsKeyDown(Keys.Left)) newPos = ball.Coordinates + new Vector2(-0.001f, 0.0f);
                 else if (newState.IsKeyDown(Keys.Right)) newPos = ball.Coordinates + new Vector2(0.001f, 0.0f);
                 if (WontBallsHaveTheSamePosition(ball, newPos) && WontBallHitWalls(ball, newPos))
                 {
                     collision.Balls[selectedBall].Coordinates = newPos;
-                    manualInputSugestion = "Move ball to it's destination by arrows.";
                 }
                 else
                 {
@@ -238,17 +277,7 @@ namespace collision
 
         private void BallsManualInput(List<Ball2> balls)
         {
-            /*balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.1f, 0.05f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.1f, 0.10f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.1f, 0.15f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.15f, 0.05f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.15f, 0.10f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.15f, 0.15f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.2f, 0.05f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.2f, 0.10f), 0.01f, 0.01f));
-            balls.Add(new Ball2(new Vector2(0.0f, 0.0f), new Vector2(0.2f, 0.15f), 0.01f, 0.01f));*/
             optionsBallPositionsString = "Manual input.";
-            manualInputSugestion = "Press 'b' to create a new ball. Simulation has to be paused.";
         }
 
         private List<Ball2> AddBalls(int option)
@@ -302,6 +331,7 @@ namespace collision
             kin_energy = 0.0f;
             isRunning = false;
             selectedBall = 0;
+            manualInputSugestion = "Press 'b' to create a new ball. Simulation has to be paused.";
 
             List<Ball2> balls = AddBalls(ballsStartingPositionOption);
             List<Wall2> walls = AddWallsAsRectangle();
@@ -457,7 +487,7 @@ namespace collision
             spriteBatch.DrawString(font, "Total kinetic energy: " + kin_energy.ToString() + "[J]", fontPos + new Vector2(0, 2 * font.LineSpacing), Color.Green);
             spriteBatch.DrawString(font, "Next collision:" + nextCollision, fontPos + new Vector2(0, 3 * font.LineSpacing), Color.Green);
             if(collision.Balls.Count > 0) spriteBatch.DrawString(font, "Selected ball: " + collision.Balls.Find(b => b.Id == selectedBallId).ToString(), fontPos + new Vector2(0, 4 * font.LineSpacing), Color.Green);
-            if (ballsStartingPositionOption == 5) spriteBatch.DrawString(font, manualInputSugestion, fontPos + new Vector2(0, 5 * font.LineSpacing), Color.Red);
+            spriteBatch.DrawString(font, manualInputSugestion, fontPos + new Vector2(0, 5 * font.LineSpacing), Color.Red);
             if (!isRunning)
             {
                 spriteBatch.Draw(pause, new Rectangle((int)pausePos.X, (int)pausePos.Y, (int)pauseSize.X, (int)pauseSize.Y), Color.Gray * 0.5f);

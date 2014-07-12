@@ -155,7 +155,7 @@ namespace CollisionLibrary
                     float c = xdiff2 + ydiff2 - r_sum2;     
                     QuadraticEquation qe = new QuadraticEquation(a, b, c);
                     float time = qe.CalcSmallerPositiveX();
-                    if ((float)Math.Round((decimal)time,3) > 0.0f && (time + TIME_TO_NEXT_COLLISION) < nc.Time)   
+                    if ((float)Math.Round((decimal)time, 3) > 0.0f && (time + TIME_TO_NEXT_COLLISION) < nc.Time)   
                     {
                         nc = new NextCollision(time, Balls[i], Balls[j]);
                         this.NextCollisions = new List<NextCollision>();
