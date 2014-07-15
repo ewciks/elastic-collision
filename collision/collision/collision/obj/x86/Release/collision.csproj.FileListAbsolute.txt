@@ -10,3 +10,7 @@ C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collis
 C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\obj\x86\Release\collision.exe
 C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\obj\x86\Release\collision.pdb
 C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\obj\x86\Release\collision.csprojResolveAssemblyReference.cache
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Release\collision.exe.manifest
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\bin\x86\Release\collision.application
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\obj\x86\Release\collision.exe.manifest
+C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\collision\collision\obj\x86\Release\collision.application
