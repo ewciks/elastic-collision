@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e4e4b186-d7e9-48fe-bccb-664a42fdea19" name="Ewa@EWA-DELLV131 2014-07-19 18:46:24" runUser="Ewa-DellV131\Ewa" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="c4f4939b-3f88-4cfc-b325-a068545cd073">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Ewa_EWA-DELLV131 2014-07-19 18_46_24">
+      <DeploymentItem filename="C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibrary\bin\x86\Release\CollisionLibrary.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2014-07-19T18:46:24.2610055+02:00" queuing="2014-07-19T18:46:26.8951562+02:00" start="2014-07-19T18:46:26.9491593+02:00" finish="2014-07-19T18:46:27.5891959+02:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" error="0" failed="1" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="CalcPostImpactVBallWallTestLeftWallFirstObjBall" storage="c:\github\elastic_collision\elastic-collision\elastic-collision\collision\collisionlibrarytestproject\bin\release\collisionlibrarytestproject.dll" id="40aa7ec1-7f7a-70fb-9478-63e77f316a25">
+      <Execution id="c756c094-afb4-4e80-8fc4-60fb1cd00fa1" />
+      <TestMethod codeBase="C:/GitHub/elastic_collision/elastic-collision/elastic-collision/collision/CollisionLibraryTestProject/bin/Release/CollisionLibraryTestProject.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="CollisionLibraryTestProject.CollisionTest, CollisionLibraryTestProject, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="CalcPostImpactVBallWallTestLeftWallFirstObjBall" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="40aa7ec1-7f7a-70fb-9478-63e77f316a25" executionId="c756c094-afb4-4e80-8fc4-60fb1cd00fa1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="c756c094-afb4-4e80-8fc4-60fb1cd00fa1" testId="40aa7ec1-7f7a-70fb-9478-63e77f316a25" testName="CalcPostImpactVBallWallTestLeftWallFirstObjBall" computerName="EWA-DELLV131" duration="00:00:00.1328040" startTime="2014-07-19T18:46:27.0441647+02:00" endTime="2014-07-19T18:46:27.5531938+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c756c094-afb4-4e80-8fc4-60fb1cd00fa1">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.AreEqual failed. Expected:&lt;ID: [5], V: (1,5, 6), coord: (2, -3), mass: 0,01, radius: 0,01&gt;. Actual:&lt;ID: [1], V: (1,5, 6), coord: (2,01, -3), mass: 0,01, radius: 0,01&gt;. </Message>
+          <StackTrace>   at CollisionLibraryTestProject.CollisionTest.CalcPostImpactVBallWallTestLeftWallFirstObjBall() in C:\GitHub\elastic_collision\elastic-collision\elastic-collision\collision\CollisionLibraryTestProject\CollisionTest.cs:line 210
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

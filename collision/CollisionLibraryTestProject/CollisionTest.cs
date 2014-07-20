@@ -199,11 +199,11 @@ namespace CollisionLibraryTestProject
         [TestMethod()]
         public void CalcPostImpactVBallWallTestLeftWallFirstObjBall()
         {
-            Ball2 ball = new Ball2(new Vector2(-1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            Ball2 ball = new Ball2(new Vector2(-1.5f, 6.0f), new Vector2(2.01f, -3.0f), 0.01f, 0.01f);
             Wall2 wall = new Wall2(new Vector2(2.0f, -3.0f), WallOrientation.Left);
             Collision target = new Collision();
             NextCollision nc = new NextCollision(0.0f, ball, wall);
-            Ball2 expectedBall = new Ball2(new Vector2(1.5f, 6.0f), new Vector2(2.0f, -3.0f), 0.01f, 0.01f);
+            Ball2 expectedBall = new Ball2(new Vector2(1.5f, 6.0f), new Vector2(2.01f, -3.0f), 0.01f, 0.01f);
             NextCollision actual;
             actual = target.CalcPostImpactVBallWall(nc);
             Ball2 actualBall = (Ball2)actual.Obj1;
